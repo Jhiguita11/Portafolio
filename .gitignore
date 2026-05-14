@@ -17,8 +17,13 @@
 # Nested repos
 portafolio-jhs/
 
-# Videos — too large for GitHub (host on YouTube/Vimeo instead)
+# Videos — large files excluded, small ones (<100MB) allowed via negation
 *.mp4
+!src/Assets/Projects/Akayu/Teaser_Fornite_Akayu.mp4
+!src/Assets/Projects/MZ/MZVD_2.mp4
+!src/Assets/Projects/Miesfut/Miesfut_Speedfast.mp4
+!src/Assets/Projects/Miesfruit/Miesfruit.mp4
+!src/Assets/Projects_Web/Nexarq360/2026-05-14 14-02-55.mp4
 
 # misc
 .DS_Store
