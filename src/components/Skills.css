@@ -1,0 +1,213 @@
+/* ===== SKILLS SECTION ===== */
+
+.skills-section {
+  min-height: 100vh;
+  padding: 60px 60px 80px;
+  background: linear-gradient(250deg, rgb(30, 57, 114), rgb(0, 0, 0));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient orbs */
+.skills-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.skills-orb--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 70%);
+  top: -120px;
+  right: 5%;
+}
+
+.skills-orb--2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 70%);
+  bottom: 20px;
+  left: 3%;
+}
+
+/* ===== HEADER ===== */
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-main-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  margin: 0 0 18px;
+  font-weight: 700;
+}
+
+.skills-divider {
+  height: 3px;
+  width: 72px;
+  background: linear-gradient(90deg, transparent, #2563eb, #38bdf8, transparent);
+  margin: 0 auto;
+  border-radius: 2px;
+  transform-origin: center;
+}
+
+/* ===== COLUMNS GRID ===== */
+
+.skills-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+  align-items: start;
+}
+
+/* ===== GROUP CARD ===== */
+
+.skills-group-card {
+  background: rgba(10, 18, 35, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  border-radius: 20px;
+  padding: 26px 18px 22px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.skills-group-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 12px 48px rgba(37, 99, 235, 0.14);
+  transform: translateY(-4px);
+}
+
+/* ===== BADGE ===== */
+
+.group-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  border-radius: 20px;
+  padding: 4px 11px 4px 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #60a5fa;
+  margin-bottom: 14px;
+}
+
+.group-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.8);
+  flex-shrink: 0;
+}
+
+/* ===== GROUP TITLE ===== */
+
+.skills-column-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 0 0 18px;
+  letter-spacing: 0.02em;
+}
+
+/* ===== SKILL BOXES — DENSE (4+ items): grid 2 cols ===== */
+
+.skills-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* ===== SKILL BOXES — SPARSE (≤3 items): single col, horizontal ===== */
+
+.skills-cards--sparse {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.skills-cards--sparse .skill-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  padding: 18px 20px;
+  min-height: 72px;
+}
+
+.skills-cards--sparse .skill-icon {
+  font-size: 34px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  min-width: 38px;
+}
+
+.skills-cards--sparse .skill-box p {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.01em;
+}
+
+.skills-cards--sparse .skill-box:hover p {
+  color: #ffffff;
+}
+
+/* ===== SKILL BOX (base) ===== */
+
+.skill-box {
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 14px;
+  padding: 14px 8px 12px;
+  text-align: center;
+  cursor: default;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.skill-box:hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.12);
+}
+
+.skill-icon {
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.skill-box:hover .skill-icon {
+  filter: drop-shadow(0 0 7px rgba(56, 189, 248, 0.65));
+}
+
+.skill-box p {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease;
+}
+
+.skill-box:hover p {
+  color: #e2e8f0;
+}

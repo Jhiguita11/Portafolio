@@ -1,0 +1,131 @@
+/* ===== ABOUT SECTION ===== */
+
+.about-section {
+  min-height: 100vh;
+  padding: 80px 60px;
+  background: linear-gradient(250deg, rgb(30, 57, 114), rgb(0, 0, 0));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Avatar ── */
+
+.about-avatar {
+  position: relative;
+  z-index: 4;
+  margin-bottom: -68px;
+}
+
+.about-avatar__ring {
+  padding: 4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #60a5fa, #1e3a8a);
+  box-shadow:
+    0 0 40px rgba(37, 99, 235, 0.55),
+    0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+.about-avatar__ring img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #0f172a;
+  transition: transform 0.4s ease;
+}
+
+.about-avatar__ring img:hover {
+  transform: scale(1.04);
+}
+
+/* ── Card ── */
+
+.about-card {
+  position: relative;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  padding: 88px 64px 52px;
+  max-width: 820px;
+  width: 100%;
+  text-align: center;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ── Title ── */
+
+.about-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: #f1f5f9;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.about-underline {
+  display: block;
+  height: 3px;
+  width: 80px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  border-radius: 2px;
+  transform-origin: center;
+}
+
+/* ── Bio text ── */
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #94a3b8;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 24px;
+  }
+
+  .about-card {
+    padding: 80px 28px 40px;
+  }
+
+  .about-avatar__ring img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-avatar {
+    margin-bottom: -56px;
+  }
+
+  .about-title {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+
+  .about-text {
+    font-size: 0.93rem;
+  }
+}

@@ -1,0 +1,14 @@
+.floating-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.floating-icon {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.12);
+  filter: blur(0.3px);
+  will-change: transform;
+}

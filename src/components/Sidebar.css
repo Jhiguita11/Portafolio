@@ -1,0 +1,280 @@
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: rgba(4, 11, 20, 0.97);
+  color: white;
+  padding: 30px 0;
+  z-index: 1000;
+  box-shadow: 4px 0 24px rgba(37, 99, 235, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+/* ===== TOGGLE BUTTON (inside sidebar, top) ===== */
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 14px;
+  margin-bottom: 20px;
+}
+
+.sidebar.collapsed .sidebar-toggle {
+  justify-content: center;
+  padding: 0;
+}
+
+.toggle-btn {
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: #93c5fd;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toggle-btn:hover {
+  background: rgba(37, 99, 235, 0.35);
+  border-color: #2563eb;
+  color: white;
+}
+
+/* ===== PROFILE ===== */
+
+.profile {
+  padding: 0 20px 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 0.25s ease, padding 0.35s ease;
+}
+
+.sidebar.collapsed .profile {
+  opacity: 0;
+  pointer-events: none;
+  padding: 0 20px 12px 20px;
+}
+
+.profile h2 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.3px;
+}
+
+.profile p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #60a5fa;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== NAV ===== */
+
+nav {
+  margin-top: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 8px;
+}
+
+nav button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  padding: 11px 12px;
+  text-align: left;
+  font-size: 0.92rem;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+nav button:hover {
+  background: rgba(37, 99, 235, 0.12);
+  color: #e2e8f0;
+}
+
+nav button.active {
+  background: rgba(37, 99, 235, 0.22);
+  color: #93c5fd;
+  box-shadow: inset 3px 0 0 #2563eb;
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease, width 0.3s ease;
+}
+
+.nav-label {
+  transition: opacity 0.2s ease, width 0.35s ease;
+  opacity: 1;
+}
+
+/* Collapsed: solo icono */
+.sidebar.collapsed .nav-icon {
+  width: 1.2rem;
+  opacity: 1;
+  overflow: visible;
+}
+
+.sidebar.collapsed .nav-label {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.sidebar.collapsed nav button {
+  justify-content: center;
+  padding: 11px 0;
+}
+
+/* ===== LANGUAGE TOGGLE ===== */
+
+.sidebar-lang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 8px;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid transparent;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 7px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  opacity: 0.45;
+  filter: grayscale(0.3);
+}
+
+.lang-btn.active {
+  opacity: 1;
+  filter: none;
+  border-color: rgba(96, 165, 250, 0.4);
+  background: rgba(96, 165, 250, 0.1);
+  transform: scale(1.12);
+}
+
+.lang-btn:hover:not(.active) {
+  opacity: 0.75;
+  transform: scale(1.08);
+}
+
+.lang-sep {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.72rem;
+  user-select: none;
+}
+
+.sidebar.collapsed .sidebar-lang {
+  gap: 0;
+  padding: 8px 6px 12px;
+}
+
+.sidebar.collapsed .lang-sep {
+  display: none;
+}
+
+.sidebar.collapsed .lang-btn {
+  display: none;
+}
+
+.sidebar.collapsed .lang-btn.active {
+  display: flex;
+  padding: 3px 5px;
+}
+
+/* ===== SOUND CONTROLS ===== */
+
+.sidebar-sound-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px 18px;
+}
+
+.sound-ctrl-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+
+.sound-ctrl-btn:hover {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sound-ctrl-btn.active {
+  color: #60a5fa;
+}
+
+.sound-ctrl-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed .sidebar-sound-controls {
+  gap: 2px;
+  padding: 6px 6px 16px;
+}
+

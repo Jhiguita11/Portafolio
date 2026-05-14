@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== Layout ===== */
+.layout {
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617, #0f172a);
+}
+
+/* ===== Content area ===== */
+.content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content.sidebar-collapsed {
+  margin-left: 60px;
+  width: calc(100% - 60px);
+}
+
+/* ===== Sections ===== */
+.section {
+  padding: 80px 60px;
+}
+
+/* ===== Global cursor blink (typewriter) ===== */
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% { opacity: 1; }
+  50%   { opacity: 0; }
+}
