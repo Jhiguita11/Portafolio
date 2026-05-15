@@ -128,14 +128,14 @@ function Contact() {
                 </a>
 
                 <a
-                  href="https://github.com/llJhiguitall"
+                  href="https://github.com/Jhiguita11"
                   target="_blank" rel="noopener noreferrer"
                   className="contact-link" aria-label="GitHub profile"
                 >
                   <span className="contact-link__icon"><FaGithub size={20} /></span>
                   <span className="contact-link__body">
                     <span className="contact-link__label">GitHub</span>
-                    <span className="contact-link__value">github.com/llJhiguitall</span>
+                    <span className="contact-link__value">github.com/Jhiguita11</span>
                   </span>
                   <HiExternalLink className="contact-link__arrow" size={16} />
                 </a>

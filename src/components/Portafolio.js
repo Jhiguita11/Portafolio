@@ -1019,7 +1019,7 @@ export default function Portfolio() {
 
                   <div className="coming-soon__links">
                     <a
-                      href="https://github.com/llJhiguitall"
+                      href="https://github.com/Jhiguita11"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="coming-soon__link"
