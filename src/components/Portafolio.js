@@ -18,16 +18,11 @@ import Casalago7  from "../Assets/Projects/Casalago/Casalago_7.png";
 import Casalago8  from "../Assets/Projects/Casalago/Casalago_8.png";
 import Casalago9  from "../Assets/Projects/Casalago/Casalago_9.png";
 import Casalago10 from "../Assets/Projects/Casalago/Casalago_10.png";
-import CasaLagoVideo   from "../Assets/Projects/Casalago/Casalago_VD3D.mp4";
-import CasaLagoVideoVR from "../Assets/Projects/Casalago/Casalago_VRVD.mp4";
-
 // Inferia
-import Inferia1     from "../Assets/Projects/inferia/Inferia_1.png";
-import InferiaVideo from "../Assets/Projects/inferia/Teaser_Inferia.mp4";
+import Inferia1 from "../Assets/Projects/inferia/Inferia_1.png";
 
 // Herragro
-import herragro1     from "../Assets/Projects/herragro/herragro.png";
-import herragroVideo from "../Assets/Projects/herragro/herragro.mp4";
+import herragro1 from "../Assets/Projects/herragro/herragro.png";
 
 // Akayu
 import Akayu1     from "../Assets/Projects/Akayu/Akayu_1.png";
@@ -42,8 +37,7 @@ import MiesfruitPortada from "../Assets/Projects/Miesfruit/PortadaMiesFruit.png"
 
 // MiesFUT
 import MiesfutPortada from "../Assets/Projects/Miesfut/MiesFUT.png";
-import MiesfutNormal  from "../Assets/Projects/Miesfut/Miesfut_speednormal.mp4";
-import MiesfutFast    from "../Assets/Projects/Miesfut/Miesfut_Speedfast.mp4";
+import MiesfutFast from "../Assets/Projects/Miesfut/Miesfut_Speedfast.mp4";
 
 // MiesCup
 import MiesCupPortada from "../Assets/Projects/Miescup/PortadaMIESCUP.png";
@@ -106,7 +100,7 @@ const projectsData = [
     cover: Casalago1,
     images: [Casalago1, Casalago2, Casalago3, Casalago4, Casalago5,
              Casalago6, Casalago7, Casalago8, Casalago9, Casalago10],
-    videos: [CasaLagoVideo, CasaLagoVideoVR],
+    videos: [],
     shortDesc: {
       en: "Client-delivered architectural VR visualization in Unreal Engine 5 — dual-platform Blueprint architecture targeting PC and Meta Quest from a single codebase, with real-time Lumen lighting, PBR material libraries, and an in-world UMG navigation system built for non-technical end users.",
       es: "Visualización arquitectónica VR entregada a cliente en Unreal Engine 5 — arquitectura Blueprint dual para PC y Meta Quest desde un solo codebase, con iluminación Lumen en tiempo real, bibliotecas de materiales PBR y sistema de navegación UMG en el mundo diseñado para usuarios finales no técnicos.",
@@ -126,7 +120,7 @@ const projectsData = [
     title: "Inferia",
     cover: Inferia1,
     images: [Inferia1],
-    videos: [InferiaVideo],
+    videos: [],
     shortDesc: {
       en: "First-person psychological horror game for PC in Unreal Engine 5.5 — custom Blueprint event sequencer for atmospheric scare triggers, AI Behavior Tree enemies with EQS perception, and Lumen-driven level design built to sustain dread across a full narrative arc.",
       es: "Videojuego de terror psicológico en primera persona para PC en Unreal Engine 5.5 — secuenciador de eventos Blueprint personalizado para triggers de susto atmosférico, enemigos con Behavior Tree de IA y percepción EQS, y diseño de niveles Lumen construido para sostener el terror en un arco narrativo completo.",
@@ -146,7 +140,7 @@ const projectsData = [
     title: "Herragro",
     cover: herragro1,
     images: [herragro1],
-    videos: [herragroVideo],
+    videos: [],
     shortDesc: {
       en: "Commercial branded game for PC delivered to HERRAGRO — Colombia's leading hardware manufacturer — built in Unreal Engine 5.0 with a Blueprint game-state system, dual-perspective camera, and a construction-site environment designed end-to-end against real brand guidelines.",
       es: "Videojuego publicitario comercial para PC entregado a HERRAGRO — el fabricante de ferreterías líder de Colombia — construido en Unreal Engine 5.0 con un sistema de estados de juego Blueprint, cámara de doble perspectiva y entorno de obra diseñado de principio a fin según especificaciones reales de marca.",
@@ -208,7 +202,7 @@ const projectsData = [
     cover: MiesfutPortada,
     heroBgPos: "center 35%",
     images: [MiesfutPortada],
-    videos: [MiesfutNormal, MiesfutFast],
+    videos: [MiesfutFast],
     shortDesc: {
       en: "VR goalkeeper training simulator for Meta Quest 2 in Unreal Engine 5.4 — custom AI Behavior Tree with dynamic shot randomization across 9 goal zones, animated NPC striker, physics-accurate ball trajectories, motion-controller save detection, and session performance HUD — formal proposal for Once Caldas F.C.",
       es: "Simulador VR de entrenamiento de porteros para Meta Quest 2 en Unreal Engine 5.4 — Behavior Tree de IA personalizado con aleatorización dinámica de disparos en 9 zonas del arco, delantero NPC animado, trayectorias de balón precisas en física, detección de paradas por controlador de movimiento y HUD de rendimiento — propuesta formal para el Once Caldas F.C.",
