@@ -65,39 +65,39 @@ function Contact() {
               <form onSubmit={handleSubmit} noValidate>
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="name">{c.name}</label>
                     <input
                       id="name" name="name" type="text"
-                      placeholder={c.namePlaceholder}
+                      placeholder=" "
                       value={form.name} onChange={handleChange} required
                     />
+                    <label htmlFor="name">{c.name}</label>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="email">{c.email}</label>
                     <input
                       id="email" name="email" type="email"
-                      placeholder="your@email.com"
+                      placeholder=" "
                       value={form.email} onChange={handleChange} required
                     />
+                    <label htmlFor="email">{c.email}</label>
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="subject">{c.subject}</label>
                   <input
                     id="subject" name="subject" type="text"
-                    placeholder={c.subjectPlaceholder}
+                    placeholder=" "
                     value={form.subject} onChange={handleChange} required
                   />
+                  <label htmlFor="subject">{c.subject}</label>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="message">{c.message}</label>
                   <textarea
                     id="message" name="message" rows={6}
-                    placeholder={c.messagePlaceholder}
+                    placeholder=" "
                     value={form.message} onChange={handleChange} required
                   />
+                  <label htmlFor="message">{c.message}</label>
                 </div>
 
                 <button className="contact-btn" type="submit" disabled={status === "loading"}>

@@ -309,12 +309,17 @@ const projectsData = [
     id: 11,
     title: "Mies AR",
     cover: ARMiesLogo,
+    cardImgPos: "center 20%",
+    cardImgFit: "contain",
+    cardImgBg: "#ffffff",
+    cardImgScale: 1.32,
     heroCover: ARMiesPortada,
     images: [],
     videos: [],
     url: "https://jeremyh00.github.io/AR-MIES-WEB/",
     heroBgSize: "cover",
     heroBgPos: "center center",
+    heroBgPosMobile: "70% center",
     shortDesc: {
       en: "Web AR app for MiesGroup built with WebXR, Three.js, and JavaScript — real-time surface detection via WebXR Device API, spatial 3D object anchoring, and multi-touch gesture controls (pinch-to-scale, drag-to-reposition) running entirely in the mobile browser with zero installation.",
       es: "App web AR para MiesGroup construida con WebXR, Three.js y JavaScript — detección de superficies en tiempo real vía WebXR Device API, anclaje espacial de objetos 3D y controles por gestos multitáctiles (pellizcar para escalar, arrastrar para reposicionar) ejecutándose íntegramente en el navegador móvil sin instalación.",
@@ -432,9 +437,11 @@ function MediaCarousel({ items, title }) {
 
 function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasPrev, hasNext, total, currentIndex }) {
   const topRef = useRef(null);
+  const [descExpanded, setDescExpanded] = useState(false);
 
   useEffect(() => {
     topRef.current?.scrollIntoView({ behavior: "instant" });
+    setDescExpanded(false);
   }, [project]);
 
   useEffect(() => {
@@ -496,6 +503,8 @@ function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasP
           backgroundSize: project.heroBgSize ?? undefined,
           backgroundBlendMode: project.heroBgBlend ?? undefined,
           backgroundColor: project.heroBgBlend ? "#060d1e" : undefined,
+          "--hero-bg-pos-mobile": project.heroBgPosMobile ?? "center center",
+          "--hero-bg-size-mobile": project.heroBgSizeMobile ?? "cover",
         }}
       >
         <div className="pj-page__hero-gradient" />
@@ -549,7 +558,17 @@ function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasP
             transition={{ delay: 0.3, duration: 0.5 }}
           >
             <h2 className="pj-page__section-label">{ui.about}</h2>
-            <p className="pj-page__long-desc">{project.longDesc[lang]}</p>
+            <p className={`pj-page__long-desc${descExpanded ? " pj-page__long-desc--expanded" : ""}`}>
+              {project.longDesc[lang]}
+            </p>
+            <button
+              className="pj-page__desc-toggle"
+              onClick={() => setDescExpanded((v) => !v)}
+            >
+              {descExpanded
+                ? (lang === "es" ? "Ver menos" : "See less")
+                : (lang === "es" ? "Ver más" : "See more")}
+            </button>
           </motion.div>
           <motion.div
             className="pj-page__meta-col"
@@ -953,6 +972,7 @@ export default function Portfolio() {
                             src={project.cover}
                             alt={project.title}
                             loading="lazy"
+                            style={(project.cardImgPos || project.cardImgFit) ? { objectPosition: project.cardImgPos, objectFit: project.cardImgFit, backgroundColor: project.cardImgBg, transform: project.cardImgScale ? `scale(${project.cardImgScale})` : undefined } : undefined}
                           />
                         ) : (
                           <div className="project-card__no-thumb" aria-hidden="true">

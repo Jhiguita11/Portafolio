@@ -3,7 +3,7 @@
 .contact-section {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   color: white;
 }
 
@@ -342,5 +342,142 @@
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-header {
+    margin-bottom: 28px;
+  }
+
+  .contact-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .contact-subtitle {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Form card con botón sticky */
+  .contact-form-card {
+    padding: 20px 16px 80px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  /* ── Floating labels ── */
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    position: absolute;
+    left: 14px;
+    top: 13px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #475569;
+    pointer-events: none;
+    transition: top 0.18s ease, font-size 0.18s ease, color 0.18s ease;
+    background: transparent;
+    padding: 0 4px;
+  }
+
+  .form-group input:focus ~ label,
+  .form-group input:not(:placeholder-shown) ~ label,
+  .form-group textarea:focus ~ label,
+  .form-group textarea:not(:placeholder-shown) ~ label {
+    top: -9px;
+    font-size: 0.7rem;
+    color: #60a5fa;
+    background: #0d1b35;
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-group {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    padding: 14px 14px 10px;
+    min-width: 0;
+  }
+
+  /* ── Botón sticky al fondo ── */
+  .contact-btn {
+    position: sticky;
+    bottom: 16px;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.45);
+  }
+
+  /* ── Info panel ── */
+  .contact-info-card {
+    padding: 20px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .contact-info-card h3,
+  .contact-info-card > p {
+    display: none;
+  }
+
+  /* Links horizontales compactos */
+  .contact-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .contact-link {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 10px;
+    gap: 8px;
+  }
+
+  .contact-link__body {
+    align-items: center;
+  }
+
+  .contact-link__value {
+    font-size: 0.7rem;
+  }
+
+  .contact-link__arrow {
+    display: none;
+  }
+
+  .contact-info {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .contact-orb {
+    width: 300px;
+    height: 300px;
   }
 }

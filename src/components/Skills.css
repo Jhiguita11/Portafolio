@@ -211,3 +211,57 @@
 .skill-box:hover p {
   color: #e2e8f0;
 }
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+  .skills-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 40px 20px 60px;
+  }
+
+  .skills-header {
+    margin-bottom: 36px;
+  }
+
+  .skills-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .skills-group-card {
+    padding: 20px 14px 16px;
+  }
+
+  .skills-column-title {
+    font-size: 0.85rem;
+  }
+
+  .skills-cards {
+    gap: 8px;
+  }
+
+  .skill-box {
+    padding: 12px 6px 10px;
+  }
+
+  .skill-icon {
+    font-size: 24px;
+  }
+
+  .skill-box p {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .skills-columns {
+    grid-template-columns: 1fr;
+  }
+}

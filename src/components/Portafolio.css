@@ -665,6 +665,10 @@
   background: linear-gradient(to right, rgba(37, 99, 235, 0.4), transparent);
 }
 
+.pj-page__desc-toggle {
+  display: none;
+}
+
 .pj-page__long-desc {
   font-size: 1.05rem;
   color: #94a3b8;
@@ -1239,35 +1243,70 @@
 
   /* Project page */
   .pj-page__topnav {
-    padding: 16px 24px;
+    padding: 12px 16px;
+    gap: 8px;
   }
 
+  /* Nav pills: solo flechas, sin texto de proyecto */
+  .pj-nav-pill {
+    padding: 7px 10px;
+    font-size: 0;        /* oculta el texto */
+    min-width: 36px;
+    max-width: 36px;
+    justify-content: center;
+  }
+
+  .pj-nav-pill svg {
+    font-size: 18px;     /* restaura solo el ícono */
+    flex-shrink: 0;
+  }
+
+  .pj-page__nav-counter {
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* Hero más compacto */
   .pj-page__hero {
-    height: 50vh;
-    min-height: 320px;
+    height: 45vh;
+    min-height: 260px;
+    background-position: var(--hero-bg-pos-mobile, center center);
+    background-size: var(--hero-bg-size-mobile, cover);
   }
 
   .pj-page__hero-content {
-    padding: 0 24px 36px;
+    padding: 0 20px 28px;
   }
 
   .pj-page__hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
     letter-spacing: -0.5px;
+    margin-bottom: 8px;
   }
 
+  /* Ocultar descripción larga en el hero — ya aparece en el contenido */
   .pj-page__hero-short {
-    font-size: 0.92rem;
+    display: none;
+  }
+
+  /* Tags del hero: máx 2 líneas */
+  .pj-tags {
+    gap: 6px;
+  }
+
+  .pj-tag {
+    font-size: 0.65rem;
+    padding: 2px 9px;
   }
 
   .pj-page__content {
-    padding: 0 24px 60px;
+    padding: 0 20px 60px;
   }
 
   .pj-page__overview {
     grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 40px 0;
+    gap: 24px;
+    padding: 32px 0;
   }
 
   .pj-page__meta-col {
@@ -1275,13 +1314,79 @@
   }
 
   .pj-page__section {
-    padding: 36px 0;
+    padding: 28px 0;
   }
 
-  .pj-nav-pill {
-    padding: 8px 14px;
-    font-size: 0.76rem;
-    max-width: 130px;
+  /* Descripción colapsable en mobile */
+  .pj-page__long-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .pj-page__long-desc--expanded {
+    display: block;
+    overflow: visible;
+  }
+
+  .pj-page__desc-toggle {
+    display: inline-block;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #60a5fa;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* ── Grid: 2 columnas en móvil mediano ── */
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* ── Tarjeta: imagen más pequeña ── */
+  .project-card img,
+  .project-card__no-thumb {
+    height: 180px;
+  }
+
+  /* ── Descripción siempre visible en touch ── */
+  .card-short-desc {
+    max-height: 80px;
+    opacity: 1;
+    font-size: 0.72rem;
+  }
+
+  .overlay {
+    padding: 14px 16px 16px;
+  }
+
+  .overlay h3 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+  }
+
+  .card-tag {
+    font-size: 0.62rem;
+    padding: 2px 8px;
+  }
+}
+
+/* ── En pantallas muy pequeñas: 1 sola columna ── */
+@media (max-width: 420px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .project-card img,
+  .project-card__no-thumb {
+    height: 200px;
   }
 }
 

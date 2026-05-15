@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "./App.css";
 
@@ -12,7 +12,15 @@ import Contact from "./components/Contact";
 import Resume from "./components/resume";
 
 function AppInner() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => window.innerWidth > 768);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth <= 768) setIsSidebarOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const [section, setSection] = useState("hero");
 
@@ -54,14 +62,20 @@ function AppInner() {
   return (
   <div className="layout">
 
-
    <Sidebar
-  setSection={setSection}
-  active={section}
-  isOpen={isSidebarOpen}
-  setIsOpen={setIsSidebarOpen}
-/>
+    setSection={setSection}
+    active={section}
+    isOpen={isSidebarOpen}
+    setIsOpen={setIsSidebarOpen}
+  />
 
+  {isSidebarOpen && (
+    <div
+      className="sidebar-mobile-overlay"
+      onClick={() => setIsSidebarOpen(false)}
+      aria-hidden="true"
+    />
+  )}
 
     <main className={`content${isSidebarOpen ? "" : " sidebar-collapsed"}`}>
       <AnimatePresence mode="wait">
