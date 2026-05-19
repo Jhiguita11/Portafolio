@@ -779,6 +779,16 @@
   margin: 24px 0 0;
 }
 
+.pj-credit-link {
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.pj-credit-link:hover {
+  text-decoration: underline;
+}
+
 /* Footer — back to top */
 
 .pj-page__footer-nav {

@@ -102,6 +102,11 @@ const projectsData = [
     images: [Casalago1, Casalago2, Casalago3, Casalago4, Casalago5,
              Casalago6, Casalago7, Casalago8, Casalago9, Casalago10],
     videos: [CasalagoVideo],
+    renderCredit: {
+      en: "Work done at MIESGROUP alongside {link} for JARAMILLO MORA construction company.",
+      es: "Trabajo realizado en MIESGROUP de la mano de {link} para la constructora JARAMILLO MORA.",
+    },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     shortDesc: {
       en: "Client-delivered architectural VR visualization in Unreal Engine 5 — dual-platform Blueprint architecture targeting PC and Meta Quest from a single codebase, with real-time Lumen lighting, PBR material libraries, and an in-world UMG navigation system built for non-technical end users.",
       es: "Visualización arquitectónica VR entregada a cliente en Unreal Engine 5 — arquitectura Blueprint dual para PC y Meta Quest desde un solo codebase, con iluminación Lumen en tiempo real, bibliotecas de materiales PBR y sistema de navegación UMG en el mundo diseñado para usuarios finales no técnicos.",
@@ -662,7 +667,16 @@ function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasP
 
         {/* Render credit */}
         {project.renderCredit && (
-          <p className="pj-page__render-credit">{project.renderCredit[lang]}</p>
+          <p className="pj-page__render-credit">
+            {project.creditLink
+              ? project.renderCredit[lang].split("{link}").map((part, i, arr) =>
+                  i < arr.length - 1
+                    ? <span key={i}>{part}<a href={project.creditLink.url} target="_blank" rel="noopener noreferrer" className="pj-credit-link">{project.creditLink.text}</a></span>
+                    : part
+                )
+              : project.renderCredit[lang]
+            }
+          </p>
         )}
 
         {/* Back to top */}
