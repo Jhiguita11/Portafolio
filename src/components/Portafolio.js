@@ -8,7 +8,6 @@ import { playHover, playClick } from "../utils/sounds";
 import "./Portafolio.css";
 
 // CasaLago
-import CasalagoVideo from "../Assets/Projects/Casalago/Casalago.mp4";
 import Casalago1  from "../Assets/Projects/Casalago/Casalago_1.png";
 import Casalago2  from "../Assets/Projects/Casalago/Casalago_2.png";
 import Casalago3  from "../Assets/Projects/Casalago/Casalago_3.png";
@@ -101,7 +100,7 @@ const projectsData = [
     cover: Casalago1,
     images: [Casalago1, Casalago2, Casalago3, Casalago4, Casalago5,
              Casalago6, Casalago7, Casalago8, Casalago9, Casalago10],
-    videos: [CasalagoVideo],
+    videos: [],
     shortDesc: {
       en: "Client-delivered architectural VR visualization in Unreal Engine 5 — dual-platform Blueprint architecture targeting PC and Meta Quest from a single codebase, with real-time Lumen lighting, PBR material libraries, and an in-world UMG navigation system built for non-technical end users.",
       es: "Visualización arquitectónica VR entregada a cliente en Unreal Engine 5 — arquitectura Blueprint dual para PC y Meta Quest desde un solo codebase, con iluminación Lumen en tiempo real, bibliotecas de materiales PBR y sistema de navegación UMG en el mundo diseñado para usuarios finales no técnicos.",
