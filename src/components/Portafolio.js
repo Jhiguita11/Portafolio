@@ -142,6 +142,8 @@ const projectsData = [
     year: "2024",
     tools: "Unreal Engine 5.5, Lumen, Nanite, Blueprints, Level Design",
     tags: ["Unreal Engine 5.5", "Horror", "PC", "Lumen", "Nanite", "Level Design"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "3d",
   },
   {
@@ -162,6 +164,8 @@ const projectsData = [
     year: "2023",
     tools: "Unreal Engine 5.0, Blueprints, Blender, Level Design",
     tags: ["Unreal Engine 5.0", "PC", "Branding", "Game Design", "Blueprints"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "3d",
   },
   {
@@ -182,6 +186,8 @@ const projectsData = [
     year: "2022",
     tools: "Unreal Engine 5, UEFN, Blueprints, Level Design",
     tags: ["Unreal Engine 5", "Fortnite", "Adventure", "Blueprints", "UEFN"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "3d",
   },
   {
@@ -203,6 +209,8 @@ const projectsData = [
     year: "2023",
     tools: "Unreal Engine 5.2, Meta Quest 2, Blueprints, Blender",
     tags: ["Unreal Engine 5.2", "VR", "Meta Quest 2", "Game Design", "Blueprints"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "3d",
   },
   {
@@ -224,6 +232,8 @@ const projectsData = [
     year: "2024",
     tools: "Unreal Engine 5.4, Meta Quest 2, Blueprints, AI Behavior Trees, Blender",
     tags: ["Unreal Engine 5.4", "VR", "Meta Quest 2", "AI", "Sports Tech", "Blueprints"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "3d",
   },
   {
@@ -244,6 +254,8 @@ const projectsData = [
     year: "2024",
     tools: "Unreal Engine 5.3, Lumen, Blueprints, AI Behavior Trees, Blender",
     tags: ["Unreal Engine 5.3", "Survival", "Horror", "PC", "Lumen", "AI"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "3d",
   },
   {
@@ -265,6 +277,8 @@ const projectsData = [
     year: "2024",
     tools: "Unreal Engine 5.3, Meta Quest 3, Blueprints, AI, Blender",
     tags: ["Unreal Engine 5.3", "VR", "Meta Quest 3", "Sports Tech", "Tennis", "Blueprints"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "3d",
   },
   {
@@ -341,6 +355,8 @@ const projectsData = [
     year: "2026",
     tools: "WebXR, Three.js, JavaScript",
     tags: ["WebAR", "Mixed Reality", "3D", "Mobile", "MiesGroup"],
+    renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
     category: "web",
   },
   { id: 12, title: "KumandayStudios",  cover: KumandayPortada, images: [], videos: [], shortDesc: { en: "Coming soon", es: "Próximamente" }, longDesc: { en: "Coming soon", es: "Próximamente" }, type: { en: "Coming soon", es: "Próximamente" }, year: "", tools: "", tags: [], category: "web", comingSoon: true },
