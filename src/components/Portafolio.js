@@ -69,6 +69,7 @@ import FisicaInmersivaPortada from "../Assets/Projects/Fisica Inmmersiva/Portada
 // Web projects
 import ARMiesLogo        from "../Assets/Projects_Web/ARMies/LogoMiesAR.jpg";
 import ARMiesPortada     from "../Assets/Projects_Web/ARMies/Portadamiesar.jpg";
+import ARMiesVideo       from "../Assets/Projects_Web/ARMies/MIES AR.mp4";
 import KumandayPortada  from "../Assets/Projects_Web/KumandayStudios/PortadaKS.png";
 import Mies360Logo        from "../Assets/Projects_Web/Nexarq360/LogoNexarq360.png";
 import Nexarq360Portada   from "../Assets/Projects_Web/Nexarq360/LogoPortada1.jpg";
@@ -323,7 +324,7 @@ const projectsData = [
     cardImgScale: 1.32,
     heroCover: ARMiesPortada,
     images: [],
-    videos: [],
+    videos: [ARMiesVideo],
     url: "https://jeremyh00.github.io/AR-MIES-WEB/",
     heroBgSize: "cover",
     heroBgPos: "center center",
