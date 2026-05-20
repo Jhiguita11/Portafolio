@@ -9,6 +9,7 @@ import {
   HiX,
   HiVolumeUp,
   HiVolumeOff,
+  HiOfficeBuilding,
 } from "react-icons/hi";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
@@ -33,6 +34,7 @@ export default function Sidebar({ setSection, active, isOpen, setIsOpen }) {
     { key: "skills",    label: t.sidebar.skills,    icon: <HiLightningBolt /> },
     { key: "portfolio", label: t.sidebar.portfolio, icon: <HiBriefcase /> },
     { key: "resume",    label: t.sidebar.resume,    icon: <HiDocument /> },
+    { key: "clients",   label: t.sidebar.clients,   icon: <HiOfficeBuilding /> },
     { key: "contact",   label: t.sidebar.contact,   icon: <HiMail /> },
   ];
 

@@ -10,6 +10,7 @@ import Skills from "./components/Skills";
 import Portafolio from "./components/Portafolio";
 import Contact from "./components/Contact";
 import Resume from "./components/resume";
+import Clients from "./components/Clients";
 
 function AppInner() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(() => window.innerWidth > 768);
@@ -52,6 +53,8 @@ function AppInner() {
         return <Portafolio />;
       case "resume":
         return <Resume />;
+      case "clients":
+        return <Clients />;
       case "contact":
         return <Contact />;
       default:
