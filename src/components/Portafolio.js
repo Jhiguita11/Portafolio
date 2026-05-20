@@ -21,9 +21,11 @@ import Casalago9  from "../Assets/Projects/Casalago/Casalago_9.png";
 import Casalago10 from "../Assets/Projects/Casalago/Casalago_10.png";
 // Inferia
 import Inferia1 from "../Assets/Projects/inferia/Inferia_1.png";
+import InferiaVideo from "../Assets/Projects/inferia/Teaser_Inferia.mp4";
 
 // Herragro
 import herragro1 from "../Assets/Projects/herragro/herragro.png";
+import HerragroVideo from "../Assets/Projects/herragro/Herragro.mp4";
 
 // Akayu
 import Akayu1     from "../Assets/Projects/Akayu/Akayu_1.png";
@@ -126,7 +128,7 @@ const projectsData = [
     title: "Inferia",
     cover: Inferia1,
     images: [Inferia1],
-    videos: [],
+    videos: [InferiaVideo],
     shortDesc: {
       en: "First-person psychological horror game for PC in Unreal Engine 5.5 — custom Blueprint event sequencer for atmospheric scare triggers, AI Behavior Tree enemies with EQS perception, and Lumen-driven level design built to sustain dread across a full narrative arc.",
       es: "Videojuego de terror psicológico en primera persona para PC en Unreal Engine 5.5 — secuenciador de eventos Blueprint personalizado para triggers de susto atmosférico, enemigos con Behavior Tree de IA y percepción EQS, y diseño de niveles Lumen construido para sostener el terror en un arco narrativo completo.",
@@ -146,7 +148,7 @@ const projectsData = [
     title: "Herragro",
     cover: herragro1,
     images: [herragro1],
-    videos: [],
+    videos: [HerragroVideo],
     shortDesc: {
       en: "Commercial branded game for PC delivered to HERRAGRO — Colombia's leading hardware manufacturer — built in Unreal Engine 5.0 with a Blueprint game-state system, dual-perspective camera, and a construction-site environment designed end-to-end against real brand guidelines.",
       es: "Videojuego publicitario comercial para PC entregado a HERRAGRO — el fabricante de ferreterías líder de Colombia — construido en Unreal Engine 5.0 con un sistema de estados de juego Blueprint, cámara de doble perspectiva y entorno de obra diseñado de principio a fin según especificaciones reales de marca.",
