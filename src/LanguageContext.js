@@ -69,7 +69,7 @@ export const translations = {
         {
           name: "MIESGROUP",
           initials: "MG",
-          accent: "#6366f1",
+          accent: "#9ca3af",
           sector: "Interactive Technology & VR",
           desc: "Interactive technology studio where I worked as a 3D Developer, delivering VR experiences, architectural visualizations, and branded games for their clients.",
           projects: ["CasaLago VR", "MiesFruit", "MiesFUT", "MiesCup", "Mies AR"],
@@ -78,7 +78,7 @@ export const translations = {
         {
           name: "HERRAGRO",
           initials: "HG",
-          accent: "#f97316",
+          accent: "#FDD000",
           sector: "Hardware & Manufacturing",
           desc: "Colombia's leading hardware manufacturer. Delivered a branded interactive PC game to showcase their product line at trade shows and brand events.",
           projects: ["Herragro Game"],
@@ -87,7 +87,7 @@ export const translations = {
         {
           name: "Constructora JARAMILLO MORA",
           initials: "JM",
-          accent: "#3b82f6",
+          accent: "#E20B13",
           sector: "Real Estate & Construction",
           desc: "Real estate construction company. Developed a dual-platform VR architectural walkthrough of the CasaLago residential project for Meta Quest and PC.",
           projects: ["CasaLago VR"],
@@ -96,7 +96,7 @@ export const translations = {
         {
           name: "KUMANDAY STUDIOS",
           initials: "KS",
-          accent: "#8b5cf6",
+          accent: "#64748b",
           sector: "Game & Creative Studio",
           desc: "Creative game studio for which I built two web projects: their studio portfolio platform and MiHogar, a web app for home service management.",
           projects: ["KumandayStudios Web", "MiHogar"],
@@ -105,7 +105,7 @@ export const translations = {
         {
           name: "Universidad de Manizales",
           initials: "UM",
-          accent: "#10b981",
+          accent: "#1B4D3E",
           sector: "Education & Research",
           desc: "My home university, for which I developed Física Inmersiva — an interactive VR physics experience as part of my academic work in Systems & Telecommunications Engineering.",
           projects: ["Física Inmersiva"],
@@ -264,7 +264,7 @@ export const translations = {
         {
           name: "MIESGROUP",
           initials: "MG",
-          accent: "#6366f1",
+          accent: "#9ca3af",
           sector: "Tecnología Interactiva & VR",
           desc: "Estudio de tecnología interactiva donde trabajé como Desarrollador 3D, entregando experiencias VR, visualizaciones arquitectónicas y videojuegos publicitarios.",
           projects: ["CasaLago VR", "MiesFruit", "MiesFUT", "MiesCup", "Mies AR"],
@@ -273,7 +273,7 @@ export const translations = {
         {
           name: "HERRAGRO",
           initials: "HG",
-          accent: "#f97316",
+          accent: "#FDD000",
           sector: "Ferretería & Manufactura",
           desc: "El fabricante de ferretería líder de Colombia. Entregué un videojuego publicitario interactivo para PC que presenta su línea de productos en ferias y eventos de marca.",
           projects: ["Herragro Game"],
@@ -282,7 +282,7 @@ export const translations = {
         {
           name: "Constructora JARAMILLO MORA",
           initials: "JM",
-          accent: "#3b82f6",
+          accent: "#E20B13",
           sector: "Construcción & Inmobiliaria",
           desc: "Empresa constructora e inmobiliaria. Desarrollé un recorrido VR arquitectónico del proyecto residencial CasaLago para Meta Quest y PC.",
           projects: ["CasaLago VR"],
@@ -291,7 +291,7 @@ export const translations = {
         {
           name: "KUMANDAY STUDIOS",
           initials: "KS",
-          accent: "#8b5cf6",
+          accent: "#64748b",
           sector: "Estudio Creativo & Videojuegos",
           desc: "Estudio creativo de videojuegos para el que desarrollé dos proyectos web: su plataforma de portafolio y MiHogar, una app web para gestión de servicios del hogar.",
           projects: ["KumandayStudios Web", "MiHogar"],
@@ -300,7 +300,7 @@ export const translations = {
         {
           name: "Universidad de Manizales",
           initials: "UM",
-          accent: "#10b981",
+          accent: "#1B4D3E",
           sector: "Educación & Investigación",
           desc: "Mi universidad, para la que desarrollé Física Inmersiva — una experiencia interactiva de física en VR como parte de mi trabajo académico en Ingeniería en Sistemas y Telecomunicaciones.",
           projects: ["Física Inmersiva"],

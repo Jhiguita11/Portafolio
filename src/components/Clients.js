@@ -1,6 +1,19 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
+import LogoMiesgroup from "../Assets/logos_clientes/logo_mies.png";
+import LogoHerragro from "../Assets/logos_clientes/LOGO_HERRAGRO.png";
+import LogoJMora from "../Assets/logos_clientes/Logo_JMora.png";
+import LogoKumanday from "../Assets/logos_clientes/LogoKumanday.png";
+import LogoUniManizales from "../Assets/logos_clientes/LOGO_UNIMANIZALES.png";
 import "./Clients.css";
+
+const LOGOS = {
+  MIESGROUP: LogoMiesgroup,
+  HERRAGRO: LogoHerragro,
+  "Constructora JARAMILLO MORA": LogoJMora,
+  "KUMANDAY STUDIOS": LogoKumanday,
+  "Universidad de Manizales": LogoUniManizales,
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -36,7 +49,17 @@ function Clients() {
               style={{ "--accent": client.accent }}
             >
               <div className="client-card__top">
-                <div className="client-card__avatar">{client.initials}</div>
+                <div className="client-card__avatar">
+                  {LOGOS[client.name] ? (
+                    <img
+                      src={LOGOS[client.name]}
+                      alt={client.name}
+                      className="client-card__logo"
+                    />
+                  ) : (
+                    client.initials
+                  )}
+                </div>
                 <div className="client-card__info">
                   <h3 className="client-card__name">{client.name}</h3>
                   <span className="client-card__sector">{client.sector}</span>
