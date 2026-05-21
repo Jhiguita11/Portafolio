@@ -395,7 +395,7 @@ export const translations = {
 const LanguageContext = createContext({ lang: "en", toggle: () => {} });
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState("es");
   const toggle = () => setLang((l) => (l === "en" ? "es" : "en"));
   return (
     <LanguageContext.Provider value={{ lang, toggle }}>

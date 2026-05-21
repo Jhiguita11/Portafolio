@@ -91,16 +91,6 @@ export default function Sidebar({ setSection, active, isOpen, setIsOpen }) {
       {/* Language toggle */}
       <div className="sidebar-lang">
         <button
-          className={`lang-btn${lang === "en" ? " active" : ""}`}
-          onClick={() => { if (lang !== "en" || !isOpen) { playClick(); toggle(); } }}
-          onMouseEnter={playHover}
-          title="English"
-          aria-label="Switch to English"
-        >
-          <ReactCountryFlag countryCode="US" svg style={{ width: "1.5em", height: "1.5em" }} />
-        </button>
-        <span className="lang-sep">|</span>
-        <button
           className={`lang-btn${lang === "es" ? " active" : ""}`}
           onClick={() => { if (lang !== "es" || !isOpen) { playClick(); toggle(); } }}
           onMouseEnter={playHover}
@@ -108,6 +98,16 @@ export default function Sidebar({ setSection, active, isOpen, setIsOpen }) {
           aria-label="Cambiar a español"
         >
           <ReactCountryFlag countryCode="CO" svg style={{ width: "1.5em", height: "1.5em" }} />
+        </button>
+        <span className="lang-sep">|</span>
+        <button
+          className={`lang-btn${lang === "en" ? " active" : ""}`}
+          onClick={() => { if (lang !== "en" || !isOpen) { playClick(); toggle(); } }}
+          onMouseEnter={playHover}
+          title="English"
+          aria-label="Switch to English"
+        >
+          <ReactCountryFlag countryCode="US" svg style={{ width: "1.5em", height: "1.5em" }} />
         </button>
       </div>
     </aside>
