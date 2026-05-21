@@ -129,6 +129,7 @@ export const translations = {
       successTitle: "Message sent!",
       successText: "Thanks for reaching out. I'll reply to your email shortly.",
       sendAnother: "Send another",
+      errorText: "Something went wrong. Please try again.",
       connect: "Let's connect",
       connectText:
         "Whether you're looking to build an immersive VR experience, a game, or a modern web app — I'm here to help bring your vision to life.",
@@ -324,6 +325,7 @@ export const translations = {
       successTitle: "¡Mensaje enviado!",
       successText: "Gracias por escribir. Te responderé a tu correo pronto.",
       sendAnother: "Enviar otro",
+      errorText: "Algo salió mal. Por favor intenta de nuevo.",
       connect: "Conectemos",
       connectText:
         "Ya sea que busques crear una experiencia VR inmersiva, un juego o una aplicación web moderna — estoy aquí para ayudarte a hacerlo realidad.",

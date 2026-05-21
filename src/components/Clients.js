@@ -32,7 +32,7 @@ function Clients() {
     <section className="clients-section section">
       <div className="clients-orb" aria-hidden="true" />
 
-      <motion.div className="clients-wrapper" initial="hidden" animate="visible">
+      <motion.div className="clients-wrapper" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
         <motion.div className="clients-header" variants={fadeUp} custom={0}>
           <span className="clients-label">{c.label}</span>
           <h2 className="clients-title">{c.title}</h2>

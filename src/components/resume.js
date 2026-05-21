@@ -20,7 +20,7 @@ function Resume() {
     <section className="resume-section section">
       <div className="resume-orb" aria-hidden="true" />
 
-      <motion.div className="resume-wrapper" initial="hidden" animate="visible">
+      <motion.div className="resume-wrapper" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
         {/* Header */}
         <motion.div className="resume-header" variants={fadeUp} custom={0}>
           <span className="resume-label">{r.label}</span>

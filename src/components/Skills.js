@@ -102,7 +102,8 @@ export default function Skills() {
             custom={index}
             variants={cardVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
           >
             <div className="group-badge">
               <span className="group-badge-dot" />
@@ -119,7 +120,8 @@ export default function Skills() {
                   custom={i}
                   variants={skillVariants}
                   initial="hidden"
-                  animate="visible"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.15 }}
                   whileHover={{ y: -4, scale: 1.04 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
