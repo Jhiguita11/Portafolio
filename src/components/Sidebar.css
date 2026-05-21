@@ -170,39 +170,6 @@ nav button.active {
   padding: 11px 0;
 }
 
-/* ===== LINKEDIN ===== */
-
-.sidebar-linkedin {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 12px;
-}
-
-.linkedin-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #94a3b8;
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 7px 12px;
-  border-radius: 8px;
-  transition: background 0.18s, color 0.18s;
-  width: 100%;
-}
-
-.linkedin-btn:hover {
-  background: rgba(10, 102, 194, 0.15);
-  color: #60a5fa;
-}
-
-.linkedin-label {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 /* ===== LANGUAGE TOGGLE ===== */
 
 .sidebar-lang {
