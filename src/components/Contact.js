@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { HiMail, HiExternalLink } from "react-icons/hi";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { useLanguage } from "../LanguageContext";
 import "./Contact.css";
@@ -152,6 +152,19 @@ function Contact() {
                   <span className="contact-link__body">
                     <span className="contact-link__label">GitHub</span>
                     <span className="contact-link__value">github.com/Jhiguita11</span>
+                  </span>
+                  <HiExternalLink className="contact-link__arrow" size={16} />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/jeremy-higuita-012651278/"
+                  target="_blank" rel="noopener noreferrer"
+                  className="contact-link" aria-label="LinkedIn profile"
+                >
+                  <span className="contact-link__icon"><FaLinkedin size={20} /></span>
+                  <span className="contact-link__body">
+                    <span className="contact-link__label">LinkedIn</span>
+                    <span className="contact-link__value">{c.linkedin}</span>
                   </span>
                   <HiExternalLink className="contact-link__arrow" size={16} />
                 </a>

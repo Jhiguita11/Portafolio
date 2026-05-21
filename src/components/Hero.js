@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import "./Hero.css";
 
-function Hero() {
+function Hero({ setSection }) {
   const { t } = useLanguage();
   const roles = t.hero.roles;
 
@@ -77,6 +77,15 @@ function Hero() {
             <span className="hero-stat__number">Full</span>
             <span className="hero-stat__label">Stack</span>
           </div>
+        </div>
+
+        <div className="hero-btn-row">
+          <button className="hero-btn hero-btn--primary" onClick={() => setSection("portfolio")}>
+            {t.hero.ctaPrimary}
+          </button>
+          <button className="hero-btn hero-btn--secondary" onClick={() => setSection("contact")}>
+            {t.hero.ctaSecondary}
+          </button>
         </div>
       </div>
     </section>

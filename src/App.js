@@ -58,7 +58,7 @@ function AppInner() {
       case "contact":
         return <Contact />;
       default:
-        return <Hero />;
+        return <Hero setSection={setSection} />;
     }
   };
 

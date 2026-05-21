@@ -26,6 +26,8 @@ export const translations = {
       projects: "Projects",
       yearsExp: "Years exp.",
       specialist: "Specialist",
+      ctaPrimary: "View projects",
+      ctaSecondary: "Contact me",
     },
     about: {
       title: "ABOUT ME",
@@ -130,6 +132,7 @@ export const translations = {
       successText: "Thanks for reaching out. I'll reply to your email shortly.",
       sendAnother: "Send another",
       errorText: "Something went wrong. Please try again.",
+      linkedin: "linkedin.com/in/jeremy-higuita",
       connect: "Let's connect",
       connectText:
         "Whether you're looking to build an immersive VR experience, a game, or a modern web app — I'm here to help bring your vision to life.",
@@ -222,6 +225,8 @@ export const translations = {
       projects: "Proyectos",
       yearsExp: "Años exp.",
       specialist: "Especialista",
+      ctaPrimary: "Ver proyectos",
+      ctaSecondary: "Contáctame",
     },
     about: {
       title: "SOBRE MÍ",
@@ -326,6 +331,7 @@ export const translations = {
       successText: "Gracias por escribir. Te responderé a tu correo pronto.",
       sendAnother: "Enviar otro",
       errorText: "Algo salió mal. Por favor intenta de nuevo.",
+      linkedin: "linkedin.com/in/jeremy-higuita",
       connect: "Conectemos",
       connectText:
         "Ya sea que busques crear una experiencia VR inmersiva, un juego o una aplicación web moderna — estoy aquí para ayudarte a hacerlo realidad.",

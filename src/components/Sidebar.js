@@ -11,6 +11,7 @@ import {
   HiVolumeOff,
   HiOfficeBuilding,
 } from "react-icons/hi";
+import { FaLinkedin } from "react-icons/fa";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { useLanguage } from "../LanguageContext";
@@ -86,6 +87,23 @@ export default function Sidebar({ setSection, active, isOpen, setIsOpen }) {
           {soundOn ? <HiVolumeUp size={15} /> : <HiVolumeOff size={15} />}
           {isOpen && <span className="sound-ctrl-label">{soundOn ? "Sound ON" : "Sound"}</span>}
         </button>
+      </div>
+
+      {/* LinkedIn */}
+      <div className="sidebar-linkedin">
+        <a
+          href="https://www.linkedin.com/in/jeremy-higuita-012651278/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="linkedin-btn"
+          title="LinkedIn"
+          aria-label="LinkedIn profile"
+          onMouseEnter={playHover}
+          onClick={playClick}
+        >
+          <FaLinkedin size={16} />
+          {isOpen && <span className="linkedin-label">LinkedIn</span>}
+        </a>
       </div>
 
       {/* Language toggle */}
