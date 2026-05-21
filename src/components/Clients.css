@@ -185,6 +185,13 @@
 }
 
 @media (max-width: 480px) {
+  .client-card__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    padding: 4px;
+  }
+
   .clients-title {
     font-size: 1.6rem;
   }
