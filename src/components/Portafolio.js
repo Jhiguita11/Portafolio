@@ -79,6 +79,7 @@ import Nexarq360_3      from "../Assets/Projects_Web/Nexarq360/3.png";
 import Nexarq360_4      from "../Assets/Projects_Web/Nexarq360/4.png";
 import Nexarq360Video   from "../Assets/Projects_Web/Nexarq360/2026-05-14 14-02-55.mp4";
 import MiHogarPortada   from "../Assets/Projects_Web/MiHogar/MiHogar.jpg";
+import WebCover         from "../Assets/Images/Web.jpg";
 
 const TOOL_ICON_MAP = [
   { match: /unreal engine|uefn/i,        Icon: SiUnrealengine, color: "#3D8FFF" },
@@ -787,11 +788,23 @@ function CategoryPicker({ ui, onSelect }) {
         initial="rest"
         animate="rest"
       >
-        <div className="cat-panel__web-bg">
-          <div className="web-orb web-orb--1" />
-          <div className="web-orb web-orb--2" />
-          <div className="web-orb web-orb--3" />
-        </div>
+        <motion.div
+          className="cat-panel__bg"
+          style={{ backgroundImage: `url(${WebCover})` }}
+          variants={{
+            rest:  { filter: "blur(6px) brightness(0.45)", scale: 1.08 },
+            hover: { filter: "blur(0px) brightness(0.55)", scale: 1.12 },
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        />
+        <motion.div
+          className="cat-panel__overlay"
+          variants={{
+            rest:  { background: "linear-gradient(to top, rgba(2,6,23,0.85) 0%, rgba(2,6,23,0.5) 60%, rgba(2,6,23,0.2) 100%)" },
+            hover: { background: "linear-gradient(to top, rgba(2,6,23,0.75) 0%, rgba(2,6,23,0.3) 60%, rgba(2,6,23,0.05) 100%)" },
+          }}
+          transition={{ duration: 0.5 }}
+        />
         <motion.div
           className="cat-panel__content"
           variants={{
