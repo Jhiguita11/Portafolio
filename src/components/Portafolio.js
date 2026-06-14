@@ -79,6 +79,9 @@ import Nexarq360_3      from "../Assets/Projects_Web/Nexarq360/3.png";
 import Nexarq360_4      from "../Assets/Projects_Web/Nexarq360/4.png";
 import Nexarq360Video   from "../Assets/Projects_Web/Nexarq360/2026-05-14 14-02-55.mp4";
 import MiHogarPortada   from "../Assets/Projects_Web/MiHogar/MiHogar.jpg";
+import RightTalentLogo   from "../Assets/Projects_Web/Right_Talent/LogoBlanco.png";
+import RightTalentInside from "../Assets/Projects_Web/Right_Talent/RightTalentHero.png";
+import RightTalentBanner from "../Assets/Projects_Web/Right_Talent/RightTalentBanner.png";
 import WebCover         from "../Assets/Images/Web.jpg";
 
 const TOOL_ICON_MAP = [
@@ -333,10 +336,10 @@ const projectsData = [
     id: 11,
     title: "Mies AR",
     cover: ARMiesLogo,
-    cardImgPos: "center 20%",
+    cardImgPos: "center 88%",
     cardImgFit: "contain",
     cardImgBg: "#ffffff",
-    cardImgScale: 1.32,
+    cardImgScale: 2.2,
     heroCover: ARMiesPortada,
     images: [],
     videos: [ARMiesVideo],
@@ -358,6 +361,34 @@ const projectsData = [
     tags: ["WebAR", "Mixed Reality", "3D", "Mobile", "MiesGroup"],
     renderCredit: { en: "Project carried out at MIESGROUP alongside {link}.", es: "Proyecto realizado en MIESGROUP de la mano de {link}." },
     creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
+    category: "web",
+  },
+  {
+    id: 15,
+    title: "Right Talent",
+    cover: RightTalentLogo,
+    cardImgPos: "center center",
+    cardImgFit: "contain",
+    cardImgBg: "#0a1832",
+    cardImgScale: 1.15,
+    heroCover: RightTalentInside,
+    images: [RightTalentBanner],
+    videos: [],
+    heroBgSize: "cover",
+    heroBgPos: "center center",
+    heroGradient: "linear-gradient(to bottom, rgba(2,6,23,0.1) 0%, rgba(2,6,23,0.3) 55%, rgba(9,16,36,0.9) 100%)",
+    shortDesc: {
+      en: "Full-stack recruitment web platform for the luxury hospitality sector — connects hotels and resorts with qualified operational staff (housekeeping, front desk, banquets, maintenance, lifeguards) through categorized job listings, candidate profiles, and an application flow, built with React and TypeScript on the frontend and Node.js on the backend.",
+      es: "Plataforma web full-stack de reclutamiento para el sector hotelero de lujo — conecta hoteles y resorts con personal operativo calificado (housekeeping, recepción, banquetes, mantenimiento, salvavidas) mediante listados de vacantes por categoría, perfiles de candidatos y un flujo de postulación, construida con React y TypeScript en el frontend y Node.js en el backend.",
+    },
+    longDesc: {
+      en: "Right Talent is a recruitment web platform developed for a staffing company specialized in operational talent for the luxury hotel, resort, and hospitality sector. The goal: streamline how hotels, restaurants, and vacation resorts connect with qualified operational staff — housekeeping, front desk, banquet service, maintenance, lifeguards, kitchen and cleaning personnel — in a single, branded destination. The frontend was built with React and TypeScript, structuring the interface into reusable, strongly-typed components: a job catalog browsable by role category, candidate profile cards, and a clear application flow designed around two distinct user types — the companies posting vacancies and the candidates seeking work. The backend was developed in Node.js, handling the core business logic: user registration and authentication, vacancy publishing and management for employer accounts, and the matching layer that connects candidates with open positions. Styling was authored with custom CSS, prioritizing a clean, responsive, and accessible experience aligned with the brand's premium identity (deep navy and gold) aimed at the luxury hospitality market. The project covers full-stack development end-to-end: component architecture on the frontend, server-side logic on the backend, and the design of a dual-audience interface serving employers and job-seekers with different needs.",
+      es: "Right Talent es una plataforma web de reclutamiento desarrollada para una empresa de dotación de personal especializada en talento operativo para el sector hotelero, de resorts y hospitalidad de lujo. El objetivo: agilizar la forma en que hoteles, restaurantes y complejos vacacionales se conectan con personal operativo calificado —housekeeping, recepción, servicio de banquetes, mantenimiento, salvavidas, cocina y personal de aseo— en un solo destino con identidad de marca. El frontend fue construido con React y TypeScript, estructurando la interfaz en componentes reutilizables y fuertemente tipados: un catálogo de vacantes navegable por categoría de puesto, fichas de candidatos y un flujo de postulación claro diseñado en torno a dos tipos de usuario distintos — las empresas que publican vacantes y los candidatos que buscan empleo. El backend fue desarrollado en Node.js, gestionando la lógica de negocio central: registro y autenticación de usuarios, publicación y administración de vacantes por parte de las empresas, y la capa de conexión entre candidatos y ofertas. El estilizado se desarrolló con CSS a medida, priorizando una experiencia limpia, responsiva y accesible alineada con la identidad premium de la marca (azul marino y dorado) orientada al mercado hotelero de lujo. El proyecto cubre el desarrollo full-stack de principio a fin: arquitectura de componentes en el frontend, lógica de servidor en el backend y el diseño de una interfaz de doble audiencia que atiende a empresas y a candidatos con necesidades distintas.",
+    },
+    type: { en: "Recruitment Web Platform", es: "Plataforma Web de Reclutamiento" },
+    year: "2026",
+    tools: "React, Node.js, TypeScript, JavaScript, CSS",
+    tags: ["React", "Node.js", "TypeScript", "Recruitment", "Hospitality"],
     category: "web",
   },
   { id: 12, title: "KumandayStudios",  cover: KumandayPortada, images: [], videos: [], shortDesc: { en: "Coming soon", es: "Próximamente" }, longDesc: { en: "Coming soon", es: "Próximamente" }, type: { en: "Coming soon", es: "Próximamente" }, year: "", tools: "", tags: [], category: "web", comingSoon: true },
@@ -533,7 +564,7 @@ function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasP
           "--hero-bg-size-mobile": project.heroBgSizeMobile ?? "cover",
         }}
       >
-        <div className="pj-page__hero-gradient" />
+        <div className="pj-page__hero-gradient" style={project.heroGradient ? { background: project.heroGradient } : undefined} />
         <div className="pj-page__hero-content">
           <motion.span
             className="pj-page__hero-type"
