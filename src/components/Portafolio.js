@@ -9,80 +9,80 @@ import "./Portafolio.css";
 
 // CasaLago
 import CasalagoVideo from "../Assets/Projects/Casalago/CasalagOp.mp4";
-import Casalago1  from "../Assets/Projects/Casalago/Casalago_1.png";
-import Casalago2  from "../Assets/Projects/Casalago/Casalago_2.png";
-import Casalago3  from "../Assets/Projects/Casalago/Casalago_3.png";
-import Casalago4  from "../Assets/Projects/Casalago/Casalago_4.png";
-import Casalago5  from "../Assets/Projects/Casalago/Casalago_5.png";
-import Casalago6  from "../Assets/Projects/Casalago/Casalago_6.png";
-import Casalago7  from "../Assets/Projects/Casalago/Casalago_7.png";
-import Casalago8  from "../Assets/Projects/Casalago/Casalago_8.png";
-import Casalago9  from "../Assets/Projects/Casalago/Casalago_9.png";
-import Casalago10 from "../Assets/Projects/Casalago/Casalago_10.png";
+import Casalago1  from "../Assets/Projects/Casalago/Casalago_1.webp";
+import Casalago2  from "../Assets/Projects/Casalago/Casalago_2.webp";
+import Casalago3  from "../Assets/Projects/Casalago/Casalago_3.webp";
+import Casalago4  from "../Assets/Projects/Casalago/Casalago_4.webp";
+import Casalago5  from "../Assets/Projects/Casalago/Casalago_5.webp";
+import Casalago6  from "../Assets/Projects/Casalago/Casalago_6.webp";
+import Casalago7  from "../Assets/Projects/Casalago/Casalago_7.webp";
+import Casalago8  from "../Assets/Projects/Casalago/Casalago_8.webp";
+import Casalago9  from "../Assets/Projects/Casalago/Casalago_9.webp";
+import Casalago10 from "../Assets/Projects/Casalago/Casalago_10.webp";
 // Inferia
-import Inferia1 from "../Assets/Projects/inferia/Inferia_1.png";
+import Inferia1 from "../Assets/Projects/inferia/Inferia_1.webp";
 import InferiaVideo from "../Assets/Projects/inferia/Teaser_Inferia.mp4";
 
 // Herragro
-import herragro1 from "../Assets/Projects/herragro/herragro.png";
+import herragro1 from "../Assets/Projects/herragro/herragro.webp";
 import HerragroVideo from "../Assets/Projects/herragro/Herragro.mp4";
 
 // Akayu
-import Akayu1     from "../Assets/Projects/Akayu/Akayu_1.png";
-import Akayu2     from "../Assets/Projects/Akayu/Akayu_2.png";
-import Akayu3     from "../Assets/Projects/Akayu/Akayu_3.png";
-import AkayuMapa  from "../Assets/Projects/Akayu/Mapa.png";
+import Akayu1     from "../Assets/Projects/Akayu/Akayu_1.webp";
+import Akayu2     from "../Assets/Projects/Akayu/Akayu_2.webp";
+import Akayu3     from "../Assets/Projects/Akayu/Akayu_3.webp";
+import AkayuMapa  from "../Assets/Projects/Akayu/Mapa.webp";
 import AkayuVideo from "../Assets/Projects/Akayu/Teaser_Fornite_Akayu.mp4";
 
 // MiesFruit
 import MiesfruitVideo   from "../Assets/Projects/Miesfruit/Miesfruit.mp4";
-import MiesfruitPortada from "../Assets/Projects/Miesfruit/PortadaMiesFruit.png";
+import MiesfruitPortada from "../Assets/Projects/Miesfruit/PortadaMiesFruit.webp";
 
 // MiesFUT
-import MiesfutPortada from "../Assets/Projects/Miesfut/MiesFUT.png";
+import MiesfutPortada from "../Assets/Projects/Miesfut/MiesFUT.webp";
 import MiesfutFast from "../Assets/Projects/Miesfut/Miesfut_Speedfast.mp4";
 
 // MiesCup
-import MiesCupPortada from "../Assets/Projects/Miescup/PortadaMIESCUP.png";
+import MiesCupPortada from "../Assets/Projects/Miescup/PortadaMIESCUP.webp";
 
 // MZ
-import MZ1    from "../Assets/Projects/MZ/MZ_1.png";
-import MZ2    from "../Assets/Projects/MZ/MZ_2.png";
-import MZ3    from "../Assets/Projects/MZ/MZ_3.png";
-import MZ4    from "../Assets/Projects/MZ/MZ_4.png";
-import MZ5    from "../Assets/Projects/MZ/MZ_5.png";
-import MZ6    from "../Assets/Projects/MZ/MZ_6.png";
-import MZ7    from "../Assets/Projects/MZ/MZ_7.png";
-import MZ8    from "../Assets/Projects/MZ/MZ_8.png";
+import MZ1    from "../Assets/Projects/MZ/MZ_1.webp";
+import MZ2    from "../Assets/Projects/MZ/MZ_2.webp";
+import MZ3    from "../Assets/Projects/MZ/MZ_3.webp";
+import MZ4    from "../Assets/Projects/MZ/MZ_4.webp";
+import MZ5    from "../Assets/Projects/MZ/MZ_5.webp";
+import MZ6    from "../Assets/Projects/MZ/MZ_6.webp";
+import MZ7    from "../Assets/Projects/MZ/MZ_7.webp";
+import MZ8    from "../Assets/Projects/MZ/MZ_8.webp";
 import MZVideo2 from "../Assets/Projects/MZ/MZVD_2.mp4";
 
 // Blender
-import BlenderComercial from "../Assets/Projects/Blender/Comercial.png";
-import BlenderUntitled  from "../Assets/Projects/Blender/untitled.png";
+import BlenderComercial from "../Assets/Projects/Blender/Comercial.webp";
+import BlenderUntitled  from "../Assets/Projects/Blender/untitled.webp";
 
 // Cubexus
-import CubexusLogo from "../Assets/Projects/Cubexus/LogoCubexus.png";
+import CubexusLogo from "../Assets/Projects/Cubexus/LogoCubexus.webp";
 
 // Fisica Inmersiva
-import FisicaInmersivaPortada from "../Assets/Projects/Fisica Inmmersiva/PortadaFisicaInmersiva.png";
+import FisicaInmersivaPortada from "../Assets/Projects/Fisica Inmmersiva/PortadaFisicaInmersiva.webp";
 
 // Web projects
-import ARMiesLogo        from "../Assets/Projects_Web/ARMies/LogoMiesAR.jpg";
-import ARMiesPortada     from "../Assets/Projects_Web/ARMies/Portadamiesar.jpg";
+import ARMiesLogo        from "../Assets/Projects_Web/ARMies/LogoMiesAR.webp";
+import ARMiesPortada     from "../Assets/Projects_Web/ARMies/Portadamiesar.webp";
 import ARMiesVideo       from "../Assets/Projects_Web/ARMies/MIES AR.mp4";
-import KumandayPortada  from "../Assets/Projects_Web/KumandayStudios/PortadaKS.png";
-import Mies360Logo        from "../Assets/Projects_Web/Nexarq360/LogoNexarq360.png";
-import Nexarq360Portada   from "../Assets/Projects_Web/Nexarq360/LogoPortada1.jpg";
-import Nexarq360_1        from "../Assets/Projects_Web/Nexarq360/1.png";
-import Nexarq360_2      from "../Assets/Projects_Web/Nexarq360/2.png";
-import Nexarq360_3      from "../Assets/Projects_Web/Nexarq360/3.png";
-import Nexarq360_4      from "../Assets/Projects_Web/Nexarq360/4.png";
+import KumandayPortada  from "../Assets/Projects_Web/KumandayStudios/PortadaKS.webp";
+import Mies360Logo        from "../Assets/Projects_Web/Nexarq360/LogoNexarq360.webp";
+import Nexarq360Portada   from "../Assets/Projects_Web/Nexarq360/LogoPortada1.webp";
+import Nexarq360_1        from "../Assets/Projects_Web/Nexarq360/1.webp";
+import Nexarq360_2      from "../Assets/Projects_Web/Nexarq360/2.webp";
+import Nexarq360_3      from "../Assets/Projects_Web/Nexarq360/3.webp";
+import Nexarq360_4      from "../Assets/Projects_Web/Nexarq360/4.webp";
 import Nexarq360Video   from "../Assets/Projects_Web/Nexarq360/2026-05-14 14-02-55.mp4";
-import MiHogarPortada   from "../Assets/Projects_Web/MiHogar/MiHogar.jpg";
-import RightTalentLogo   from "../Assets/Projects_Web/Right_Talent/LogoBlanco.png";
-import RightTalentInside from "../Assets/Projects_Web/Right_Talent/RightTalentHero.png";
-import RightTalentBanner from "../Assets/Projects_Web/Right_Talent/RightTalentBanner.png";
-import WebCover         from "../Assets/Images/Web.jpg";
+import MiHogarPortada   from "../Assets/Projects_Web/MiHogar/MiHogar.webp";
+import RightTalentLogo   from "../Assets/Projects_Web/Right_Talent/LogoBlanco.webp";
+import RightTalentInside from "../Assets/Projects_Web/Right_Talent/RightTalentHero.webp";
+import RightTalentBanner from "../Assets/Projects_Web/Right_Talent/RightTalentBanner.webp";
+import WebCover         from "../Assets/Images/Web.webp";
 
 const TOOL_ICON_MAP = [
   { match: /unreal engine|uefn/i,        Icon: SiUnrealengine, color: "#3D8FFF" },
