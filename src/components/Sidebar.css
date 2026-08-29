@@ -339,3 +339,68 @@ nav button.active {
   padding: 6px 6px 16px;
 }
 
+
+/* ===== MÓVIL: cajón deslizante sobre el contenido ===== */
+
+@media (max-width: 768px) {
+  /* Colapsado ya no significa "rail angosto" sino "fuera de pantalla":
+     así el contenido dispone del ancho completo de la pantalla. */
+  .sidebar {
+    width: min(280px, 82vw);
+    transform: translateX(0);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sidebar.collapsed {
+    width: min(280px, 82vw);
+    transform: translateX(-100%);
+  }
+
+  /* El cajón siempre se ve completo — nunca en modo solo iconos.
+     Sin esto, al cerrarlo se encogería a rail mientras se desliza. */
+  .sidebar.collapsed .profile {
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0 20px 24px 20px;
+  }
+
+  .sidebar.collapsed .nav-icon {
+    width: 1.2rem;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  .sidebar.collapsed .nav-label {
+    opacity: 1;
+    width: auto;
+    overflow: visible;
+  }
+
+  .sidebar.collapsed nav button {
+    justify-content: flex-start;
+    padding: 11px 12px;
+  }
+
+  .sidebar.collapsed .sidebar-toggle {
+    justify-content: flex-end;
+    padding: 0 14px;
+  }
+
+  .sidebar.collapsed .lang-btn {
+    display: flex;
+  }
+
+  .sidebar.collapsed .lang-sep {
+    display: inline;
+  }
+
+  .sidebar.collapsed .sidebar-lang {
+    gap: 6px;
+    padding: 16px 12px;
+  }
+
+  .sidebar.collapsed .sidebar-sound-controls {
+    gap: 8px;
+    padding: 10px 12px 18px;
+  }
+}

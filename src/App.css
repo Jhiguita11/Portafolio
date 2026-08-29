@@ -37,14 +37,48 @@ body {
   padding: 80px 60px;
 }
 
+/* ===== Floating mobile nav toggle ===== */
+.mobile-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 95;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #93c5fd;
+  background: rgba(4, 11, 20, 0.92);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
 /* ===== Mobile sidebar overlay ===== */
 .sidebar-mobile-overlay {
   display: none;
 }
 
 @media (max-width: 768px) {
+  /* El padding superior deja libre la esquina del botón flotante de menú */
   .section {
-    padding: 40px 20px;
+    padding: 76px 20px 40px;
+  }
+
+  /* El sidebar pasa a ser un cajón sobre el contenido: deja de
+     reservarle ancho para que las secciones usen la pantalla entera */
+  .content,
+  .content.sidebar-collapsed {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
   }
 
   .sidebar-mobile-overlay {

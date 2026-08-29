@@ -533,8 +533,8 @@
   position: relative;
   height: 62vh;
   min-height: 440px;
-  background-size: cover;
-  background-position: center top;
+  background-size: var(--hero-bg-size, cover);
+  background-position: var(--hero-bg-pos, center top);
   background-repeat: no-repeat;
   background-color: #060d1e;
   display: flex;
@@ -1605,12 +1605,13 @@
 
 @media (max-width: 768px) {
   .portfolio-grid-wrapper {
-    padding: 60px 24px;
+    padding: 76px 24px 60px;
   }
 
+  /* Corridos a la derecha para no quedar bajo el botón flotante de menú */
   .cat-back-btn {
     top: 20px;
-    left: 24px;
+    left: 72px;
   }
 
   /* ── Category picker: stacked vertically on mobile ── */
@@ -1654,7 +1655,7 @@
 
   /* Project page */
   .pj-page__topnav {
-    padding: 12px 16px;
+    padding: 12px 16px 12px 68px;
     gap: 8px;
   }
 
@@ -1744,6 +1745,24 @@
 
   .pj-deck {
     gap: 18px;
+  }
+
+  /* En pantalla estrecha el 16/9 deja una tarjeta diminuta: se pasa a 4/3
+     y la activa ocupa casi todo el ancho, dejando solo un guiño de las
+     apiladas detrás. */
+  .pj-deck__stage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pj-deck__card {
+    left: 3%;
+    width: 90%;
+    height: calc(100% - 16px);
+    border-radius: 14px;
+  }
+
+  .pj-deck--portrait .pj-deck__stage {
+    aspect-ratio: 3 / 4;
   }
 
   .pj-deck__arrow {

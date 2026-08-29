@@ -342,12 +342,14 @@
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
+  /* minmax(0, 1fr) en vez de 1fr: sin esto un hijo con contenido ancho
+     (el textarea) fuerza la columna y desborda horizontalmente */
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .form-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -366,7 +368,7 @@
   }
 
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 16px;
   }
 
@@ -375,6 +377,7 @@
     padding: 20px 16px 80px;
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -449,10 +452,13 @@
     display: none;
   }
 
-  /* Links horizontales compactos */
+  /* Links horizontales compactos.
+     minmax(0, 1fr): con 1fr, el texto sin cortes del enlace (el usuario de
+     GitHub, el correo) fija un mínimo de contenido que ensancha la columna
+     y desborda la tarjeta. */
   .contact-links {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
@@ -463,10 +469,25 @@
     text-align: center;
     padding: 14px 10px;
     gap: 8px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .contact-link__body {
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Son 3 enlaces en 2 columnas: el último ocupa la fila entera
+     para no dejar una celda vacía al lado */
+  .contact-link:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .contact-link__label,
+  .contact-link__value {
+    max-width: 100%;
   }
 
   .contact-link__value {

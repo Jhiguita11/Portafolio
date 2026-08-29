@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { HiMenu } from "react-icons/hi";
 import "./App.css";
 
 import { LanguageProvider } from "./LanguageContext";
@@ -64,6 +65,16 @@ function AppInner() {
 
   return (
   <div className="layout">
+
+   {/* Botón flotante: en móvil el sidebar sale de pantalla y este es
+       el único acceso al menú (el toggle interno se va con él) */}
+   <button
+     className="mobile-nav-toggle"
+     onClick={() => setIsSidebarOpen(true)}
+     aria-label="Abrir menú"
+   >
+     <HiMenu />
+   </button>
 
    <Sidebar
     setSection={setSection}

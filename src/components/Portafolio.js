@@ -124,6 +124,9 @@ const projectsData = [
     cardImgOffsetY: "22px",
     heroCover: MonarcaFondo,
     heroBgPos: "center center",
+    /* Banner muy panorámico (2.66): con `contain` quedarían franjas enormes,
+       así que en móvil se recorta hacia la derecha, donde está la mariposa. */
+    heroBgPosMobile: "100% center",
     heroGradient: "linear-gradient(to bottom, rgba(2,6,23,0.38) 0%, rgba(2,6,23,0.74) 45%, rgba(9,16,36,0.99) 100%)",
     images: [],
     videos: [],
@@ -365,6 +368,8 @@ const projectsData = [
     renderCredit: { en: "Renders courtesy of MIESGROUP S.A.S", es: "Renders cortesía de MIESGROUP S.A.S" },
     heroBgSize: "auto 150%",
     heroBgPos: "left center",
+    heroBgSizeMobile: "contain",
+    heroBgPosMobile: "center center",
     shortDesc: {
       en: "360° architectural tour platform built as an independent product — custom spherical renderer on Three.js/WebGL, programmable interactive map system, and fully settings-driven UI customization (branding, overlays, audio, transitions) ready to deploy for any construction or real estate project.",
       es: "Plataforma de recorridos arquitectónicos 360° construida como producto independiente — renderizador esférico personalizado sobre Three.js/WebGL, sistema de mapa interactivo programable y personalización de UI completamente por ajustes (marca, superposiciones, audio, transiciones) lista para desplegar en cualquier proyecto de construcción o inmobiliaria.",
@@ -434,7 +439,8 @@ const projectsData = [
     url: "https://miesgroup3d.github.io/MIES-AR/",
     heroBgSize: "cover",
     heroBgPos: "center center",
-    heroBgPosMobile: "70% center",
+    heroBgSizeMobile: "contain",
+    heroBgPosMobile: "center center",
     shortDesc: {
       en: "Web AR app for MiesGroup built with WebXR, Three.js, and JavaScript — real-time surface detection via WebXR Device API, spatial 3D object anchoring, and multi-touch gesture controls (pinch-to-scale, drag-to-reposition) running entirely in the mobile browser with zero installation.",
       es: "App web AR para MiesGroup construida con WebXR, Three.js y JavaScript — detección de superficies en tiempo real vía WebXR Device API, anclaje espacial de objetos 3D y controles por gestos multitáctiles (pellizcar para escalar, arrastrar para reposicionar) ejecutándose íntegramente en el navegador móvil sin instalación.",
@@ -464,6 +470,8 @@ const projectsData = [
     videos: [],
     heroBgSize: "cover",
     heroBgPos: "center center",
+    heroBgSizeMobile: "contain",
+    heroBgPosMobile: "center center",
     heroGradient: "linear-gradient(to bottom, rgba(2,6,23,0.1) 0%, rgba(2,6,23,0.3) 55%, rgba(9,16,36,0.9) 100%)",
     url: "https://rtproservices.co",
     shortDesc: {
@@ -486,6 +494,8 @@ const projectsData = [
     cover: NiphosCard,
     heroCover: NiphosFondo,
     heroBgPos: "center center",
+    heroBgSizeMobile: "contain",
+    heroBgPosMobile: "center center",
     images: [],
     videos: [],
     url: "https://niphosstudio.com",
@@ -856,10 +866,12 @@ function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasP
         className="pj-page__hero"
         style={{
           backgroundImage: (project.heroCover ?? project.cover) ? `url(${project.heroCover ?? project.cover})` : "none",
-          backgroundPosition: project.heroBgPos ?? "center top",
-          backgroundSize: project.heroBgSize ?? undefined,
           backgroundBlendMode: project.heroBgBlend ?? undefined,
           backgroundColor: project.heroBgBlend ? "#060d1e" : undefined,
+          // Posición y tamaño van por variable, no como estilo en línea: en línea
+          // ganarían siempre y la media query móvil no podría sobrescribirlos.
+          "--hero-bg-pos": project.heroBgPos ?? "center top",
+          "--hero-bg-size": project.heroBgSize ?? "cover",
           "--hero-bg-pos-mobile": project.heroBgPosMobile ?? "center center",
           "--hero-bg-size-mobile": project.heroBgSizeMobile ?? "cover",
         }}
