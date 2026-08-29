@@ -1,16 +1,46 @@
 import { motion } from "framer-motion";
-import { HiBriefcase, HiAcademicCap, HiLightningBolt, HiDownload } from "react-icons/hi";
+import { HiDownload } from "react-icons/hi";
 import { useLanguage } from "../LanguageContext";
+import { trackPointer } from "../utils/pointer";
 import "./Resume.css";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12, duration: 0.5, ease: "easeOut" },
+    transition: { delay: i * 0.08, duration: 0.5, ease: "easeOut" },
   }),
 };
+
+/* Entrada numerada del dossier — sirve para experiencia y para educación */
+function Entry({ index, title, org, period, description, tags }) {
+  return (
+    <motion.article className="dossier-entry" variants={fadeUp} custom={index}>
+      <span className="dossier-entry__num" aria-hidden="true">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      <div className="dossier-entry__body">
+        <div className="dossier-entry__head">
+          <h4 className="dossier-entry__title">{title}</h4>
+          <span className="dossier-entry__period">{period}</span>
+        </div>
+
+        <span className="dossier-entry__org">{org}</span>
+        <p className="dossier-entry__desc">{description}</p>
+
+        {tags && tags.length > 0 && (
+          <ul className="dossier-entry__tags">
+            {tags.map((tag) => (
+              <li key={tag} className="dossier-tag">{tag}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </motion.article>
+  );
+}
 
 function Resume() {
   const { t } = useLanguage();
@@ -20,95 +50,91 @@ function Resume() {
     <section className="resume-section section">
       <div className="resume-orb" aria-hidden="true" />
 
-      <motion.div className="resume-wrapper" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
-        {/* Header */}
-        <motion.div className="resume-header" variants={fadeUp} custom={0}>
-          <span className="resume-label">{r.label}</span>
-          <h2 className="resume-title">{r.title}</h2>
-          <p className="resume-subtitle">{r.subtitle}</p>
-          <a className="resume-download-btn" href="/JeremyHiguita_CV.pdf" download aria-label="Download CV">
-            <HiDownload size={18} />
-            {r.download}
-          </a>
-        </motion.div>
+      <motion.div
+        className="dossier"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+      >
+        {/* ── Columna fija: identidad y descarga ── */}
+        <motion.aside className="dossier-rail" variants={fadeUp} custom={0}>
+          <div className="dossier-rail__inner">
+            <span className="dossier-rail__label">{r.label}</span>
+            <h2 className="dossier-rail__title">{r.title}</h2>
+            <div className="dossier-rail__rule" aria-hidden="true" />
+            <p className="dossier-rail__subtitle">{r.subtitle}</p>
 
-        {/* Experience */}
-        <motion.div className="resume-block" variants={fadeUp} custom={1}>
-          <div className="resume-block-title">
-            <HiBriefcase className="resume-block-icon" />
-            <h3>{r.experience}</h3>
+            <a
+              className="dossier-download"
+              href="/JeremyHiguita_CV.pdf"
+              download
+              onMouseMove={trackPointer}
+            >
+              <span className="dossier-download__glow" aria-hidden="true" />
+              <HiDownload size={17} />
+              <span>{r.download}</span>
+            </a>
           </div>
+        </motion.aside>
 
-          <div className="timeline">
+        {/* ── Columna de contenido ── */}
+        <div className="dossier-main">
+          <motion.section className="dossier-group" variants={fadeUp} custom={1}>
+            <header className="dossier-group__head">
+              <h3 className="dossier-group__title">{r.experience}</h3>
+              <span className="dossier-group__count">{r.exp.length}</span>
+            </header>
+
             {r.exp.map((item, i) => (
-              <motion.div key={i} className="timeline-item" variants={fadeUp} custom={2 + i}>
-                <div className="timeline-dot" />
-                <div className="timeline-content">
-                  <div className="timeline-top">
-                    <div>
-                      <h4 className="timeline-role">{item.role}</h4>
-                      <span className="timeline-company">{item.company}</span>
-                    </div>
-                    <span className="timeline-period">{item.period}</span>
-                  </div>
-                  <p className="timeline-desc">{item.description}</p>
-                  <div className="timeline-tags">
-                    {item.tags.map((tag) => (
-                      <span key={tag} className="timeline-tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+              <Entry
+                key={item.role}
+                index={i}
+                title={item.role}
+                org={item.company}
+                period={item.period}
+                description={item.description}
+                tags={item.tags}
+              />
             ))}
-          </div>
-        </motion.div>
+          </motion.section>
 
-        {/* Education */}
-        <motion.div className="resume-block" variants={fadeUp} custom={5}>
-          <div className="resume-block-title">
-            <HiAcademicCap className="resume-block-icon" />
-            <h3>{r.education}</h3>
-          </div>
+          <motion.section className="dossier-group" variants={fadeUp} custom={2}>
+            <header className="dossier-group__head">
+              <h3 className="dossier-group__title">{r.education}</h3>
+              <span className="dossier-group__count">{r.edu.length}</span>
+            </header>
 
-          <div className="timeline">
             {r.edu.map((item, i) => (
-              <motion.div key={i} className="timeline-item" variants={fadeUp} custom={6 + i}>
-                <div className="timeline-dot" />
-                <div className="timeline-content">
-                  <div className="timeline-top">
-                    <div>
-                      <h4 className="timeline-role">{item.degree}</h4>
-                      <span className="timeline-company">{item.institution}</span>
-                    </div>
-                    <span className="timeline-period">{item.period}</span>
-                  </div>
-                  <p className="timeline-desc">{item.description}</p>
-                </div>
-              </motion.div>
+              <Entry
+                key={item.degree}
+                index={i}
+                title={item.degree}
+                org={item.institution}
+                period={item.period}
+                description={item.description}
+              />
             ))}
-          </div>
-        </motion.div>
+          </motion.section>
 
-        {/* Skills summary */}
-        <motion.div className="resume-block" variants={fadeUp} custom={8}>
-          <div className="resume-block-title">
-            <HiLightningBolt className="resume-block-icon" />
-            <h3>{r.skills}</h3>
-          </div>
+          <motion.section className="dossier-group" variants={fadeUp} custom={3}>
+            <header className="dossier-group__head">
+              <h3 className="dossier-group__title">{r.skills}</h3>
+            </header>
 
-          <div className="skills-grid">
-            {r.skillGroups.map((group, i) => (
-              <motion.div key={group.category} className="skills-group" variants={fadeUp} custom={9 + i}>
-                <h4 className="skills-group-title">{group.category}</h4>
-                <div className="skills-tags">
-                  {group.items.map((skill) => (
-                    <span key={skill} className="skill-chip">{skill}</span>
-                  ))}
+            <div className="dossier-skills">
+              {r.skillGroups.map((group) => (
+                <div key={group.category} className="dossier-skill-row">
+                  <span className="dossier-skill-row__label">{group.category}</span>
+                  <ul className="dossier-skill-row__items">
+                    {group.items.map((skill) => (
+                      <li key={skill} className="dossier-tag">{skill}</li>
+                    ))}
+                  </ul>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              ))}
+            </div>
+          </motion.section>
+        </div>
       </motion.div>
     </section>
   );

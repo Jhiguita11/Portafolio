@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
+import { trackPointer } from "../utils/pointer";
 import "./Hero.css";
 
 function Hero({ setSection }) {
@@ -48,9 +49,10 @@ function Hero({ setSection }) {
       <div className="hero-orb hero-orb--2" aria-hidden="true" />
 
       <div className="hero-overlay">
-        <div className="hero-badge">{t.hero.badge}</div>
-
-        <h1 className="hero-title">Jeremy Higuita</h1>
+        <h1 className="hero-title">
+          <span className="hero-title__name">Jeremy Higuita</span>
+          <span className="hero-title__tag">{t.hero.titleTag}</span>
+        </h1>
 
         <p className="hero-subtitle">
           {t.hero.prefix}{" "}
@@ -62,29 +64,22 @@ function Hero({ setSection }) {
 
         <p className="hero-description">{t.hero.description}</p>
 
-        <div className="hero-cta-row">
-          <div className="hero-stat">
-            <span className="hero-stat__number">11+</span>
-            <span className="hero-stat__label">{t.hero.projects}</span>
-          </div>
-          <div className="hero-stat-divider" aria-hidden="true" />
-          <div className="hero-stat">
-            <span className="hero-stat__number">4+</span>
-            <span className="hero-stat__label">{t.hero.yearsExp}</span>
-          </div>
-          <div className="hero-stat-divider" aria-hidden="true" />
-          <div className="hero-stat">
-            <span className="hero-stat__number">Full</span>
-            <span className="hero-stat__label">Stack</span>
-          </div>
-        </div>
-
         <div className="hero-btn-row">
-          <button className="hero-btn hero-btn--primary" onClick={() => setSection("portfolio")}>
-            {t.hero.ctaPrimary}
+          <button
+            className="hero-btn hero-btn--primary"
+            onClick={() => setSection("portfolio")}
+            onMouseMove={trackPointer}
+          >
+            <span className="hero-btn__glow" aria-hidden="true" />
+            <span className="hero-btn__label">{t.hero.ctaPrimary}</span>
           </button>
-          <button className="hero-btn hero-btn--secondary" onClick={() => setSection("contact")}>
-            {t.hero.ctaSecondary}
+          <button
+            className="hero-btn hero-btn--secondary"
+            onClick={() => setSection("contact")}
+            onMouseMove={trackPointer}
+          >
+            <span className="hero-btn__glow" aria-hidden="true" />
+            <span className="hero-btn__label">{t.hero.ctaSecondary}</span>
           </button>
         </div>
       </div>

@@ -73,48 +73,48 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== BADGE ===== */
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #60a5fa;
-  background: rgba(37, 99, 235, 0.12);
-  border: 1px solid rgba(37, 99, 235, 0.35);
-  border-radius: 100px;
-  padding: 6px 16px;
-  margin-bottom: 28px;
-}
-
-.hero-badge::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #22d3ee;
-  box-shadow: 0 0 8px #22d3ee;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.7); }
-}
 
 /* ===== TITLE ===== */
 
 .hero-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 22px;
   font-size: clamp(2.4rem, 5vw, 4rem);
   font-weight: 700;
   margin: 0 0 16px 0;
   line-height: 1.1;
   letter-spacing: -0.5px;
   color: #f1f5f9;
+}
+
+/* Etiqueta discreta junto al nombre, separada por una línea que se desvanece */
+.hero-title__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #93c5fd;
+  align-self: center;
+  transform: translateY(2px);
+}
+
+.hero-title__tag::before {
+  content: "";
+  width: 1px;
+  height: 30px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(96, 165, 250, 0.6) 50%,
+    transparent
+  );
 }
 
 /* ===== SUBTITLE / TYPEWRITER ===== */
@@ -153,41 +153,6 @@
   max-width: 540px;
 }
 
-/* ===== STATS ROW ===== */
-
-.hero-cta-row {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.hero-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.hero-stat__number {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #e2e8f0;
-  line-height: 1;
-}
-
-.hero-stat__label {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.hero-stat-divider {
-  width: 1px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
 /* ===== CTA BUTTONS ===== */
 
 .hero-btn-row {
@@ -197,37 +162,132 @@
   flex-wrap: wrap;
 }
 
+/* Botones con halo que sigue al cursor.
+   --px / --py las escribe el onMouseMove del componente. */
 .hero-btn {
-  padding: 12px 28px;
-  border-radius: 10px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 13px 30px;
+  border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-  border: none;
+  border: 1px solid transparent;
+  --px: 50%;
+  --py: 50%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+              border-color 0.25s ease, background 0.25s ease;
+}
+
+.hero-btn__label {
+  position: relative;
+  z-index: 2;
+}
+
+/* Halo radial centrado en el puntero */
+.hero-btn__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    120px circle at var(--px) var(--py),
+    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0.06) 42%,
+    transparent 68%
+  );
+}
+
+.hero-btn:hover .hero-btn__glow {
+  opacity: 1;
+}
+
+/* Resalte del borde del lado donde está el cursor */
+.hero-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  padding: 1px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    140px circle at var(--px) var(--py),
+    rgba(147, 197, 253, 0.95),
+    transparent 70%
+  );
+  /* Recorta el degradado dejando solo el contorno */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+.hero-btn:hover::after {
+  opacity: 1;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+}
+
+.hero-btn:active {
+  transform: translateY(0);
 }
 
 .hero-btn--primary {
   background: #2563eb;
   color: #fff;
+  border-color: rgba(147, 197, 253, 0.28);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
 }
 
 .hero-btn--primary:hover {
   background: #1d4ed8;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.45);
 }
 
 .hero-btn--secondary {
   background: rgba(255, 255, 255, 0.06);
   color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .hero-btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.09);
+  color: #f1f5f9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* El halo del secundario es azul, no blanco, para que se note sobre el fondo tenue */
+.hero-btn--secondary .hero-btn__glow {
+  background: radial-gradient(
+    120px circle at var(--px) var(--py),
+    rgba(59, 130, 246, 0.4),
+    rgba(59, 130, 246, 0.1) 42%,
+    transparent 68%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-btn,
+  .hero-btn__glow,
+  .hero-btn::after {
+    transition: none;
+  }
+
+  .hero-btn:hover {
+    transform: none;
+  }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -236,5 +296,24 @@
   .hero-overlay {
     padding-left: 28px;
     padding-right: 28px;
+  }
+
+  /* Si el nombre y la etiqueta se parten en dos líneas, la línea vertical
+     de separación pierde sentido: se cambia por un guion horizontal. */
+  .hero-title {
+    gap: 4px 16px;
+  }
+
+  .hero-title__tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    gap: 12px;
+    transform: none;
+  }
+
+  .hero-title__tag::before {
+    width: 22px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(96, 165, 250, 0.6), transparent);
   }
 }

@@ -13,7 +13,6 @@ export const translations = {
       role: "Developer",
     },
     hero: {
-      badge: "Available for work",
       prefix: "I'm a",
       roles: [
         "Interactive Developer",
@@ -23,9 +22,7 @@ export const translations = {
       ],
       description:
         "Building immersive experiences at the intersection of technology and creativity — from real-time 3D worlds to modern web applications.",
-      projects: "Projects",
-      yearsExp: "Years exp.",
-      specialist: "Specialist",
+      titleTag: "Full Stack",
       ctaPrimary: "View projects",
       ctaSecondary: "Contact me",
     },
@@ -46,7 +43,6 @@ export const translations = {
       catWebSub: "React · Next.js · TypeScript",
       explore: "Explore",
       back: "Back",
-      projectsCount: "projects",
       comingSoon: "Coming soon",
       comingSoonSub: "Web projects are on the way. Stay tuned.",
       comingSoonDetail: "Currently crafting modern React experiences. Follow my progress on GitHub or connect on LinkedIn.",
@@ -62,6 +58,10 @@ export const translations = {
       tools: "Tools",
       prev: "Previous",
       next: "Next",
+      builtWith: "Built with this platform",
+      builtWithSub: "Live projects delivered on NEXARQ 360 for real clients.",
+      viewTour: "View 360° tour",
+      clientLabel: "Client",
     },
     clients: {
       label: "Who I've worked with",
@@ -73,9 +73,18 @@ export const translations = {
           initials: "MG",
           accent: "#9ca3af",
           sector: "Interactive Technology & VR",
-          desc: "Interactive technology studio where I worked as a 3D Developer, delivering VR experiences, architectural visualizations, and branded games for their clients.",
-          projects: ["CasaLago VR", "MiesFruit", "MiesFUT", "MiesCup", "Mies AR"],
-          year: "2023 — 2025",
+          desc: "Interactive technology studio where I started as a 3D Developer and returned as Lead of the 3D and web development area, delivering VR experiences, architectural visualizations, 360° tours, and branded games for their clients.",
+          projects: ["CasaLago VR", "MONARCA", "NEXARQ 360", "MiesFruit", "MiesFUT", "MiesCup", "Mies AR"],
+          year: "2023 — 2025 · 2026 — Present",
+        },
+        {
+          name: "Constructora MELÉNDEZ",
+          initials: "CM",
+          accent: "#E20E17",
+          sector: "Real Estate & Construction",
+          desc: "Real estate developer based in Cali. Through MIESGROUP I delivered the MONARCA PCVR architectural walkthrough and the Valle Alto and Reserva de Mirriñao 360° virtual tours, both live on their commercial website.",
+          projects: ["MONARCA", "Valle Alto 360°", "Reserva de Mirriñao 360°"],
+          year: "2026",
         },
         {
           name: "HERRAGRO",
@@ -96,13 +105,13 @@ export const translations = {
           year: "2024",
         },
         {
-          name: "KUMANDAY STUDIOS",
-          initials: "KS",
-          accent: "#64748b",
-          sector: "Game & Creative Studio",
-          desc: "Creative game studio for which I built two web projects: their studio portfolio platform and MiHogar, a web app for home service management.",
-          projects: ["KumandayStudios Web", "MiHogar"],
-          year: "2025",
+          name: "NIPHOS",
+          initials: "NP",
+          accent: "#e2e8f0",
+          sector: "Software & Game Studio",
+          desc: "My own studio, co-founded as an independent technology company: custom software development and, next, video games. I built its corporate site and MiHogar, a web app for home service management.",
+          projects: ["NIPHOS Web", "MiHogar"],
+          year: "2025 — Present",
         },
         {
           name: "Universidad de Manizales",
@@ -148,6 +157,14 @@ export const translations = {
       education: "Education",
       skills: "Skills",
       exp: [
+        {
+          role: "Lead of 3D & Web Development",
+          company: "MIESGROUP",
+          period: "05/2026 — Present",
+          description:
+            "Returned to MIESGROUP to lead the 3D and web development area, owning delivery across both fronts. Leading real-time architectural visualization in Unreal Engine 5 — including the MONARCA PCVR walkthrough for Constructora Meléndez — and the NEXARQ 360 platform, on which the Valle Alto and Reserva de Mirriñao virtual tours were produced and shipped to production.",
+          tags: ["Team Leadership", "Unreal Engine 5", "PCVR", "Web Development", "NEXARQ 360"],
+        },
         {
           role: "Technical Support Advisor",
           company: "MOVISTAR / ABAI",
@@ -212,7 +229,6 @@ export const translations = {
       role: "Desarrollador",
     },
     hero: {
-      badge: "Disponible para trabajar",
       prefix: "Soy",
       roles: [
         "Desarrollador Interactivo",
@@ -222,9 +238,7 @@ export const translations = {
       ],
       description:
         "Creando experiencias inmersivas en la intersección de tecnología y creatividad — desde mundos 3D en tiempo real hasta aplicaciones web modernas.",
-      projects: "Proyectos",
-      yearsExp: "Años exp.",
-      specialist: "Especialista",
+      titleTag: "Full Stack",
       ctaPrimary: "Ver proyectos",
       ctaSecondary: "Contáctame",
     },
@@ -245,7 +259,6 @@ export const translations = {
       catWebSub: "React · Next.js · TypeScript",
       explore: "Explorar",
       back: "Volver",
-      projectsCount: "proyectos",
       comingSoon: "Próximamente",
       comingSoonSub: "Los proyectos web están en camino. Pronto aquí.",
       comingSoonDetail: "Actualmente creando experiencias modernas con React. Sigue mi progreso en GitHub o conéctate en LinkedIn.",
@@ -261,6 +274,10 @@ export const translations = {
       tools: "Herramientas",
       prev: "Anterior",
       next: "Siguiente",
+      builtWith: "Proyectos hechos con esta plataforma",
+      builtWithSub: "Recorridos en vivo entregados sobre NEXARQ 360 para clientes reales.",
+      viewTour: "Ver recorrido 360°",
+      clientLabel: "Cliente",
     },
     clients: {
       label: "Con quiénes he trabajado",
@@ -272,9 +289,18 @@ export const translations = {
           initials: "MG",
           accent: "#9ca3af",
           sector: "Tecnología Interactiva & VR",
-          desc: "Estudio de tecnología interactiva donde trabajé como Desarrollador 3D, entregando experiencias VR, visualizaciones arquitectónicas y videojuegos publicitarios.",
-          projects: ["CasaLago VR", "MiesFruit", "MiesFUT", "MiesCup", "Mies AR"],
-          year: "2023 — 2025",
+          desc: "Estudio de tecnología interactiva donde empecé como Desarrollador 3D y al que regresé como Líder del área de desarrollo 3D y web, entregando experiencias VR, visualizaciones arquitectónicas, recorridos 360° y videojuegos publicitarios.",
+          projects: ["CasaLago VR", "MONARCA", "NEXARQ 360", "MiesFruit", "MiesFUT", "MiesCup", "Mies AR"],
+          year: "2023 — 2025 · 2026 — Actualidad",
+        },
+        {
+          name: "Constructora MELÉNDEZ",
+          initials: "CM",
+          accent: "#E20E17",
+          sector: "Inmobiliaria y Construcción",
+          desc: "Constructora con sede en Cali. A través de MIESGROUP entregué el recorrido arquitectónico PCVR de MONARCA y los recorridos virtuales 360° de Valle Alto y Reserva de Mirriñao, ambos publicados en su sitio comercial.",
+          projects: ["MONARCA", "Valle Alto 360°", "Reserva de Mirriñao 360°"],
+          year: "2026",
         },
         {
           name: "HERRAGRO",
@@ -295,13 +321,13 @@ export const translations = {
           year: "2024",
         },
         {
-          name: "KUMANDAY STUDIOS",
-          initials: "KS",
-          accent: "#64748b",
-          sector: "Estudio Creativo & Videojuegos",
-          desc: "Estudio creativo de videojuegos para el que desarrollé dos proyectos web: su plataforma de portafolio y MiHogar, una app web para gestión de servicios del hogar.",
-          projects: ["KumandayStudios Web", "MiHogar"],
-          year: "2025",
+          name: "NIPHOS",
+          initials: "NP",
+          accent: "#e2e8f0",
+          sector: "Estudio de Software y Videojuegos",
+          desc: "Mi propio estudio, cofundado como empresa de tecnología independiente: desarrollo de software a medida y, próximamente, videojuegos. Desarrollé su sitio corporativo y MiHogar, una app web para gestión de servicios del hogar.",
+          projects: ["NIPHOS Web", "MiHogar"],
+          year: "2025 — Actualidad",
         },
         {
           name: "Universidad de Manizales",
@@ -347,6 +373,14 @@ export const translations = {
       education: "Educación",
       skills: "Habilidades",
       exp: [
+        {
+          role: "Líder de Área de Desarrollo 3D y Web",
+          company: "MIESGROUP",
+          period: "05/2026 — Actualidad",
+          description:
+            "Regreso a MIESGROUP como líder del área de desarrollo 3D y web, a cargo de la entrega en ambos frentes. Dirijo la visualización arquitectónica en tiempo real en Unreal Engine 5 — incluido el recorrido PCVR de MONARCA para la Constructora Meléndez — y la plataforma NEXARQ 360, sobre la que se produjeron y publicaron los recorridos virtuales de Valle Alto y Reserva de Mirriñao.",
+          tags: ["Liderazgo de Equipo", "Unreal Engine 5", "PCVR", "Desarrollo Web", "NEXARQ 360"],
+        },
         {
           role: "Asesor Soporte Técnico",
           company: "MOVISTAR / ABAI",

@@ -105,9 +105,11 @@ nav {
 }
 
 nav button {
+  position: relative;
+  isolation: isolate;
   width: 100%;
   background: none;
-  border: none;
+  border: 1px solid transparent;
   color: #94a3b8;
   padding: 11px 12px;
   text-align: left;
@@ -121,11 +123,70 @@ nav button {
   gap: 12px;
   white-space: nowrap;
   overflow: hidden;
+  --px: 50%;
+  --py: 50%;
+}
+
+/* Halo azul anclado al cursor — lo alimenta trackPointer */
+.nav-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    90px circle at var(--px) var(--py),
+    rgba(59, 130, 246, 0.38),
+    rgba(59, 130, 246, 0.1) 45%,
+    transparent 70%
+  );
+}
+
+nav button:hover .nav-glow {
+  opacity: 1;
+}
+
+/* Resalte del borde del lado donde está el cursor */
+nav button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    110px circle at var(--px) var(--py),
+    rgba(147, 197, 253, 0.85),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+nav button:hover::after {
+  opacity: 1;
 }
 
 nav button:hover {
-  background: rgba(37, 99, 235, 0.12);
+  background: rgba(37, 99, 235, 0.1);
   color: #e2e8f0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-glow,
+  nav button::after {
+    transition: none;
+  }
 }
 
 nav button.active {

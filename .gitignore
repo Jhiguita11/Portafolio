@@ -29,6 +29,11 @@ portafolio-jhs/
 !src/Assets/Projects_Web/ARMies/MIES AR.mp4
 !src/Assets/Projects_Web/Nexarq360/2026-05-14 14-02-55.mp4
 
+# Originales de imagen — pesados y nunca importados por el bundle.
+# Al portafolio solo entran los .webp ya optimizados.
+*.tiff
+*.tif
+
 # misc
 .DS_Store
 .env

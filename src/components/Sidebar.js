@@ -15,6 +15,7 @@ import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { useLanguage } from "../LanguageContext";
 import { playHover, playClick, setSoundsEnabled } from "../utils/sounds";
+import { trackPointer } from "../utils/pointer";
 import "./Sidebar.css";
 
 export default function Sidebar({ setSection, active, isOpen, setIsOpen }) {
@@ -66,8 +67,10 @@ export default function Sidebar({ setSection, active, isOpen, setIsOpen }) {
             className={active === key ? "active" : ""}
             onClick={() => { playClick(); setSection(key); }}
             onMouseEnter={playHover}
+            onMouseMove={trackPointer}
             title={!isOpen ? label : undefined}
           >
+            <span className="nav-glow" aria-hidden="true" />
             <span className="nav-icon">{icon}</span>
             <span className="nav-label">{label}</span>
           </button>

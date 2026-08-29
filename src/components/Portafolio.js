@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { HiChevronLeft, HiChevronRight, HiArrowLeft, HiArrowRight, HiCode, HiArrowUp, HiPlay, HiChip, HiColorSwatch, HiMap } from "react-icons/hi";
+import { HiChevronLeft, HiChevronRight, HiArrowLeft, HiArrowRight, HiCode, HiArrowUp, HiPlay, HiChip, HiColorSwatch, HiMap, HiArrowsExpand, HiX } from "react-icons/hi";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import { SiUnrealengine, SiBlender, SiThreedotjs, SiJavascript, SiMeta, SiWebgl } from "react-icons/si";
+import { SiUnrealengine, SiBlender, SiAutodesk, SiThreedotjs, SiJavascript, SiMeta, SiWebgl } from "react-icons/si";
 import { useLanguage } from "../LanguageContext";
 import { playHover, playClick } from "../utils/sounds";
 import "./Portafolio.css";
@@ -56,6 +57,10 @@ import MZ7    from "../Assets/Projects/MZ/MZ_7.webp";
 import MZ8    from "../Assets/Projects/MZ/MZ_8.webp";
 import MZVideo2 from "../Assets/Projects/MZ/MZVD_2.mp4";
 
+// MONARCA
+import MonarcaCard  from "../Assets/Projects/Monarca/ImagenCard.webp";
+import MonarcaFondo from "../Assets/Projects/Monarca/Imagenfondo.webp";
+
 // Blender
 import BlenderComercial from "../Assets/Projects/Blender/Comercial.webp";
 import BlenderUntitled  from "../Assets/Projects/Blender/untitled.webp";
@@ -70,7 +75,8 @@ import FisicaInmersivaPortada from "../Assets/Projects/Fisica Inmmersiva/Portada
 import ARMiesLogo        from "../Assets/Projects_Web/ARMies/LogoMiesAR.webp";
 import ARMiesPortada     from "../Assets/Projects_Web/ARMies/Portadamiesar.webp";
 import ARMiesVideo       from "../Assets/Projects_Web/ARMies/MIES AR.mp4";
-import KumandayPortada  from "../Assets/Projects_Web/KumandayStudios/PortadaKS.webp";
+import NiphosCard       from "../Assets/Projects_Web/Niphos/Niphos_Card.webp";
+import NiphosFondo      from "../Assets/Projects_Web/Niphos/FondoNiphos.webp";
 import Mies360Logo        from "../Assets/Projects_Web/Nexarq360/LogoNexarq360.webp";
 import Nexarq360Portada   from "../Assets/Projects_Web/Nexarq360/LogoPortada1.webp";
 import Nexarq360_1        from "../Assets/Projects_Web/Nexarq360/1.webp";
@@ -78,6 +84,10 @@ import Nexarq360_2      from "../Assets/Projects_Web/Nexarq360/2.webp";
 import Nexarq360_3      from "../Assets/Projects_Web/Nexarq360/3.webp";
 import Nexarq360_4      from "../Assets/Projects_Web/Nexarq360/4.webp";
 import Nexarq360Video   from "../Assets/Projects_Web/Nexarq360/2026-05-14 14-02-55.mp4";
+import ValleAltoPortada from "../Assets/Projects_Web/Nexarq360/Proyectos_Realizados/Valle_Alto/ValleAlto_Portada.webp";
+import ValleAltoLogo    from "../Assets/Projects_Web/Nexarq360/Proyectos_Realizados/Valle_Alto/LogoValleAlto.webp";
+import MirrinaoPortada  from "../Assets/Projects_Web/Nexarq360/Proyectos_Realizados/Reserva_De_Mirrinao/ReservaMirrinao_Portada.webp";
+import MirrinaoLogo     from "../Assets/Projects_Web/Nexarq360/Proyectos_Realizados/Reserva_De_Mirrinao/LogoReservaMirrinao.webp";
 import MiHogarPortada   from "../Assets/Projects_Web/MiHogar/MiHogar.webp";
 import RightTalentLogo   from "../Assets/Projects_Web/Right_Talent/LogoBlanco.webp";
 import RightTalentInside from "../Assets/Projects_Web/Right_Talent/RightTalentHero.webp";
@@ -89,12 +99,14 @@ import WebCover         from "../Assets/Images/Web.webp";
 const TOOL_ICON_MAP = [
   { match: /unreal engine|uefn/i,        Icon: SiUnrealengine, color: "#3D8FFF" },
   { match: /blender|cycles|eevee/i,       Icon: SiBlender,      color: "#EA7600" },
+  { match: /3ds ?max|autodesk/i,          Icon: SiAutodesk,     color: "#0696D7" },
   { match: /three\.?js/i,                 Icon: SiThreedotjs,   color: "#049EF4" },
   { match: /javascript/i,                 Icon: SiJavascript,   color: "#F7DF1E" },
   { match: /meta quest/i,                 Icon: SiMeta,         color: "#0467DF" },
   { match: /webxr|webgl/i,               Icon: SiWebgl,        color: "#990000" },
   { match: /blueprint|uefn/i,            Icon: HiCode,         color: "#60a5fa" },
   { match: /ai|behavior tree/i,          Icon: HiChip,         color: "#a78bfa" },
+  { match: /baked lighting|lightmap|lightmass/i, Icon: HiColorSwatch, color: "#facc15" },
   { match: /pbr|shading|render|lumen|nanite|cycles|eevee/i, Icon: HiColorSwatch, color: "#34d399" },
   { match: /level design|map/i,          Icon: HiMap,          color: "#fb923c" },
 ];
@@ -104,6 +116,36 @@ function getToolEntry(name) {
 }
 
 const projectsData = [
+  {
+    id: 16,
+    title: "MONARCA",
+    cover: MonarcaCard,
+    cardImgScale: 1.22,
+    cardImgOffsetY: "22px",
+    heroCover: MonarcaFondo,
+    heroBgPos: "center center",
+    heroGradient: "linear-gradient(to bottom, rgba(2,6,23,0.38) 0%, rgba(2,6,23,0.74) 45%, rgba(9,16,36,0.99) 100%)",
+    images: [],
+    videos: [],
+    renderCredit: {
+      en: "Work done at MIESGROUP alongside {link} for CONSTRUCTORA MELÉNDEZ construction company (Cali).",
+      es: "Trabajo realizado en MIESGROUP de la mano de {link} para la CONSTRUCTORA MELÉNDEZ de Cali.",
+    },
+    creditLink: { text: "Jhiguita11", url: "https://github.com/Jhiguita11" },
+    shortDesc: {
+      en: "PCVR architectural walkthrough delivered to CONSTRUCTORA MELÉNDEZ (Cali) in Unreal Engine 5.3 — four residential typologies: three duplex apartment options and a 112 m² apartment, with a real-time material-swap system letting clients change flooring, kitchen cabinetry, and countertop finishes from inside the headset.",
+      es: "Recorrido arquitectónico PCVR entregado a la CONSTRUCTORA MELÉNDEZ (Cali) en Unreal Engine 5.3 — cuatro tipologías residenciales: tres opciones de apartamento dúplex y un apartamento de 112 m², con sistema de cambio de materiales en tiempo real que permite al cliente modificar pisos, muebles de cocina y mesones dentro del visor.",
+    },
+    longDesc: {
+      en: "MONARCA is an immersive architectural visualization developed in Unreal Engine 5.3 for PCVR, delivered as a commercial sales tool to CONSTRUCTORA MELÉNDEZ in Cali. The project presents four typologies of the development: three duplex apartment options, each with its own layout, and a 112 m² apartment — letting prospective buyers walk through and compare real spaces before they physically exist. The technical core is a real-time finish customization system built in Blueprint on top of dynamic Material Instances: the user can swap flooring materials, kitchen cabinetry, and countertops from inside the headset, with changes applying instantly and without reloading the level. The finish catalog was structured as a parameterized data layer, so adding or changing a material option does not require touching the walkthrough logic. PBR materials were authored from the real finish samples supplied by the developer, guaranteeing that what the client sees in VR matches what they receive built. Lighting was resolved with precomputed lightmaps rather than dynamic global illumination: the full light solution was baked into the level, eliminating real-time GI cost and guaranteeing a stable, consistent framerate — a critical decision in PCVR, where a frame drop translates directly into user discomfort. Geometry was hand-optimized through LOD control and draw call budgeting, without relying on Nanite, keeping scene weight under control from the modeling stage onward. VR interaction and the selection UI were built in UMG at headset scale, designed so that a sales advisor or a buyer with no technical background can operate them without instruction. Full pipeline owned end-to-end: modeling and set dressing of every space, material authoring, Blueprint interaction and variant logic, VR UI design, and final packaged client delivery.",
+      es: "MONARCA es una visualización arquitectónica inmersiva desarrollada en Unreal Engine 5.3 para PCVR, entregada como herramienta comercial de ventas a la CONSTRUCTORA MELÉNDEZ de Cali. El proyecto presenta cuatro tipologías del desarrollo: tres opciones de apartamento dúplex, cada una con su propia distribución, y un apartamento de 112 m², permitiendo a los compradores potenciales recorrer y comparar espacios reales antes de que existan físicamente. El núcleo técnico es un sistema de personalización de acabados en tiempo real construido en Blueprint sobre Material Instances dinámicas: el usuario puede intercambiar el material de pisos, los muebles de cocina y el mesón desde dentro del visor, con los cambios aplicándose instantáneamente y sin recargar el nivel. El catálogo de acabados se estructuró como una capa de datos parametrizada, de modo que agregar o cambiar una opción de material no requiere modificar la lógica del recorrido. Los materiales PBR fueron creados a partir de las muestras reales de acabados suministradas por la constructora, garantizando que lo que el cliente ve en VR corresponda con lo que recibe construido. La iluminación se resolvió con lightmaps precalculados en lugar de iluminación global dinámica: todo el trazado de luz se horneó en el nivel, eliminando el costo de GI en tiempo real y garantizando un framerate estable y constante — decisión crítica en PCVR, donde una caída de fotogramas se traduce directamente en incomodidad para el usuario. La geometría se optimizó a mano mediante control de LODs y presupuesto de draw calls, sin depender de Nanite, manteniendo el peso de la escena bajo control desde el modelado. La interacción VR y la UI de selección se construyeron en UMG a escala de visor, diseñadas para que un asesor comercial o un comprador sin experiencia técnica pueda operarlas sin instrucción previa. Pipeline completo gestionado de principio a fin: modelado y ambientación de cada espacio, creación de materiales, lógica Blueprint de interacción y variantes, diseño de UI en VR y entrega final empaquetada al cliente.",
+    },
+    type: { en: "PCVR Architectural Visualization", es: "Visualización Arquitectónica PCVR" },
+    year: "2026",
+    tools: "Unreal Engine 5.3, Blueprints, Baked Lighting, PCVR, 3ds Max",
+    tags: ["Unreal Engine 5.3", "PCVR", "Arch-Viz", "Baked Lighting", "Blueprints", "3ds Max"],
+    category: "3d",
+  },
   {
     id: 0,
     title: "CasaLago",
@@ -313,10 +355,13 @@ const projectsData = [
     id: 13,
     title: "NEXARQ 360",
     cover: Mies360Logo,
+    cardImgFit: "contain",
+    cardImgBg: "#000000",
+    cardImgScale: 1.1,
     heroCover: Nexarq360Portada,
     images: [Nexarq360_1, Nexarq360_2, Nexarq360_3, Nexarq360_4],
     videos: [Nexarq360Video],
-    url: "https://jhiguita11.github.io/NEXARQ/",
+    url: "https://nexarq360.com",
     renderCredit: { en: "Renders courtesy of MIESGROUP S.A.S", es: "Renders cortesía de MIESGROUP S.A.S" },
     heroBgSize: "auto 150%",
     heroBgPos: "left center",
@@ -332,20 +377,61 @@ const projectsData = [
     year: "2026",
     tools: "JavaScript, Three.js, WebGL, CSS, HTML",
     tags: ["360°", "Architecture", "WebGL", "Virtual Tour", "Real Estate"],
+    showcase: [
+      {
+        key: "valle-alto",
+        title: "Valle Alto",
+        cover: ValleAltoPortada,
+        logo: ValleAltoLogo,
+        logoBg: "#2f2a22",
+        url: "https://constructoramelendez.com/vallealtovr/",
+        client: "Constructora Meléndez",
+        desc: {
+          en: "Three independent tours inside one development: apartment Tipo A, apartment Tipo B, and a five-scene walkthrough of the amenities — letting buyers compare both layouts before visiting the sales room.",
+          es: "Tres recorridos independientes dentro de un mismo proyecto: apartamento Tipo A, apartamento Tipo B y un recorrido de cinco escenas por las zonas comunes — para que el comprador compare ambas distribuciones antes de ir a sala de ventas.",
+        },
+        specs: [
+          { en: "Apartments",        es: "Apartamentos" },
+          { en: "Tipo A · 2 bedrooms", es: "Tipo A · 2 alcobas" },
+          { en: "Tipo B · 3 bedrooms", es: "Tipo B · 3 alcobas" },
+          { en: "5 amenity scenes",  es: "5 escenas de zonas comunes" },
+        ],
+      },
+      {
+        key: "reserva-mirrinao",
+        title: "Reserva de Mirriñao",
+        cover: MirrinaoPortada,
+        logo: MirrinaoLogo,
+        logoBg: "#f4f1ea",
+        url: "https://constructoramelendez.com/reserva-mirrinao/",
+        client: "Constructora Meléndez",
+        desc: {
+          en: "A two-storey family house toured floor by floor. Scene connections were placed around the stairs so moving between levels reads naturally instead of jumping between disconnected panoramas.",
+          es: "Una casa familiar de dos pisos recorrida planta por planta. Las conexiones entre escenas se ubicaron alrededor de la escalera para que el cambio de nivel se lea con naturalidad y no como un salto entre panorámicas sueltas.",
+        },
+        specs: [
+          { en: "Houses",       es: "Casas" },
+          { en: "2 storeys",    es: "2 pisos" },
+          { en: "3 bedrooms",   es: "3 alcobas" },
+          { en: "2 bathrooms",  es: "2 baños" },
+          { en: "89 m²",        es: "89 m²" },
+        ],
+      },
+    ],
     category: "web",
   },
   {
     id: 11,
     title: "Mies AR",
     cover: ARMiesLogo,
-    cardImgPos: "center 88%",
-    cardImgFit: "contain",
-    cardImgBg: "#ffffff",
-    cardImgScale: 2.2,
+    cardImgPos: "center center",
+    cardImgBg: "#000000",
+    cardImgScale: 1.36,
+    cardImgOffsetY: "38px",
     heroCover: ARMiesPortada,
     images: [],
     videos: [ARMiesVideo],
-    url: "https://jeremyh00.github.io/AR-MIES-WEB/",
+    url: "https://miesgroup3d.github.io/MIES-AR/",
     heroBgSize: "cover",
     heroBgPos: "center center",
     heroBgPosMobile: "70% center",
@@ -394,100 +480,300 @@ const projectsData = [
     tags: ["React", "Vite", "Bilingual", "Hospitality", "Web Design"],
     category: "web",
   },
-  { id: 12, title: "KumandayStudios",  cover: KumandayPortada, images: [], videos: [], shortDesc: { en: "Coming soon", es: "Próximamente" }, longDesc: { en: "Coming soon", es: "Próximamente" }, type: { en: "Coming soon", es: "Próximamente" }, year: "", tools: "", tags: [], category: "web", comingSoon: true },
+  {
+    id: 12,
+    title: "NIPHOS",
+    cover: NiphosCard,
+    heroCover: NiphosFondo,
+    heroBgPos: "center center",
+    images: [],
+    videos: [],
+    url: "https://niphosstudio.com",
+    shortDesc: {
+      en: "Own studio co-founded as a technology company — a bilingual EN/ES site built in vanilla HTML, CSS, and JavaScript on GitHub Pages, presenting NIPHOS under the tagline \"Construimos mundos\": custom software development today, video game development coming next.",
+      es: "Estudio propio cofundado como empresa de tecnología — sitio bilingüe EN/ES construido en HTML, CSS y JavaScript puros sobre GitHub Pages, que presenta a NIPHOS bajo el lema \"Construimos mundos\": desarrollo de software a medida hoy, desarrollo de videojuegos próximamente.",
+    },
+    longDesc: {
+      en: "NIPHOS is my own company, co-founded in partnership as an independent technology studio built around a single idea: \"Construimos mundos\" — we build worlds, virtual and physical alike. The studio brings software development, immersive experiences, and video game creation together under one vision, offering custom-built software solutions today with game development as the next line of work. The website was developed as its public face and shipped as a fully static site — vanilla HTML, CSS, and JavaScript with no framework, deployed on GitHub Pages under the custom domain niphosstudio.com. Keeping it framework-free was a deliberate call for a young studio: near-instant load times, nothing to maintain or patch, and zero hosting cost, while leaving full control over every animation and transition. The site is organized into four sections navigated through an arrow-driven browsing system — Software, Videojuegos, Estudio, and Contacto — with a complete ES/EN language toggle that swaps all content in place. The visual identity is deliberately minimal: a monochrome palette, the mountain-and-sun mark centered as the anchor of the composition, and clean wide-tracked typography that lets the branding carry the page without decorative noise. The Estudio section introduces both co-founders — myself as CEO and Nicolás Giraldo Tobón as CTO, both systems engineers from Universidad de Manizales — and the Contacto section, headed \"Hablemos\", routes prospective clients straight to WhatsApp with social channels on the way. Owned end-to-end: brand identity, site architecture, frontend build, bilingual content, domain setup, and deployment.",
+      es: "NIPHOS es mi propia empresa, cofundada en alianza como estudio de tecnología independiente construido alrededor de una sola idea: \"Construimos mundos\", virtuales y físicos por igual. El estudio reúne desarrollo de software, experiencias inmersivas y creación de videojuegos bajo una misma visión, ofreciendo soluciones de software a medida hoy y con el desarrollo de videojuegos como próxima línea de trabajo. El sitio web fue desarrollado como su cara pública y entregado como sitio completamente estático — HTML, CSS y JavaScript puros sin framework, desplegado en GitHub Pages bajo el dominio propio niphosstudio.com. Prescindir de framework fue una decisión deliberada para un estudio que empieza: tiempos de carga casi instantáneos, nada que mantener ni parchear y costo de hosting nulo, conservando control total sobre cada animación y transición. El sitio se organiza en cuatro secciones navegables mediante un sistema de flechas — Software, Videojuegos, Estudio y Contacto — con un toggle de idioma ES/EN completo que intercambia todo el contenido en el lugar. La identidad visual es deliberadamente mínima: paleta monocromática, la marca de montaña y sol centrada como ancla de la composición y tipografía limpia de trazo amplio que deja que la marca sostenga la página sin ruido decorativo. La sección Estudio presenta a ambos cofundadores — yo como CEO y Nicolás Giraldo Tobón como CTO, ambos ingenieros de sistemas de la Universidad de Manizales — y la sección Contacto, titulada \"Hablemos\", dirige a los clientes potenciales directamente a WhatsApp, con redes sociales en camino. Gestionado de principio a fin: identidad de marca, arquitectura del sitio, desarrollo frontend, contenido bilingüe, configuración del dominio y despliegue.",
+    },
+    type: { en: "Own Studio — Software & Games", es: "Estudio Propio — Software y Videojuegos" },
+    year: "2026",
+    tools: "JavaScript, HTML, CSS, GitHub Pages",
+    tags: ["Own Studio", "Software", "Game Dev", "Bilingual", "JavaScript"],
+    category: "web",
+  },
   { id: 14, title: "MiHogar",          cover: MiHogarPortada,  images: [], videos: [], shortDesc: { en: "Coming soon", es: "Próximamente" }, longDesc: { en: "Coming soon", es: "Próximamente" }, type: { en: "Coming soon", es: "Próximamente" }, year: "", tools: "", tags: [], category: "web", comingSoon: true },
 ];
 
-/* ==================== MEDIA CAROUSEL ==================== */
+/* ==================== MEDIA DECK ==================== */
+/* Galería unificada: fotos y videos en un mazo apilado */
 
-function MediaCarousel({ items, title }) {
+const AUTOPLAY_MS = 5000;
+
+function MediaDeck({ items, title, lang, ui, sectionLabel }) {
   const [current, setCurrent] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [hovering, setHovering] = useState(false);
   const videoRef = useRef(null);
 
+  const total = items?.length ?? 0;
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total]);
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + total) % total), [total]);
+
+  // Al cambiar de tarjeta se detiene el video que estuviera sonando
   useEffect(() => {
     if (videoRef.current) videoRef.current.pause();
+    setPlaying(false);
   }, [current]);
 
-  const goTo = (index) => setCurrent(index);
-  const prev = () => setCurrent((c) => (c - 1 + items.length) % items.length);
-  const next = () => setCurrent((c) => (c + 1) % items.length);
+  // Auto-slide: se pausa con el mouse encima, con un video corriendo,
+  // con el visor abierto o si la pestaña no está visible
+  const autoPaused = playing || hovering || expanded || total < 2;
 
-  if (!items || items.length === 0) return null;
+  useEffect(() => {
+    if (autoPaused) return;
+    const id = setInterval(() => {
+      if (!document.hidden) next();
+    }, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [autoPaused, next, current]);
 
-  const isImageCarousel = items[0].type === "image";
+  // Teclado del visor expandido. Va en fase de captura para atender Escape
+  // y las flechas antes que el listener de la página de proyecto.
+  useEffect(() => {
+    if (!expanded) return;
+    const onKey = (e) => {
+      if (!["Escape", "ArrowLeft", "ArrowRight"].includes(e.key)) return;
+      e.stopPropagation();
+      if (e.key === "Escape") setExpanded(false);
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
+  }, [expanded, prev, next]);
+
+  // Bloquea el scroll del fondo mientras el visor está abierto
+  useEffect(() => {
+    if (!expanded) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [expanded]);
+
+  if (!items || total === 0) return null;
+
   const activeItem = items[current];
+  const isPortrait = activeItem.type === "video" && activeItem.portrait;
+
+  const mediaLabel = (item) =>
+    item.type === "video"
+      ? (lang === "es" ? "Video" : "Video")
+      : (lang === "es" ? "Imagen" : "Image");
 
   return (
-    <div className="pj-carousel">
+    <div className={`pj-deck${isPortrait ? " pj-deck--portrait" : ""}`}>
+      {/* Cabecera: etiqueta de sección + contador del medio actual */}
+      <h2 className="pj-page__section-label pj-deck__heading">
+        {sectionLabel}
+        <span className="pj-deck__counter">
+          {mediaLabel(activeItem)} · {current + 1} / {total}
+        </span>
+      </h2>
+
       <div
-        className="pj-carousel__track"
-        style={activeItem?.portrait ? { aspectRatio: "9/16", maxHeight: "70vh" } : undefined}
+        className="pj-deck__stage"
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
       >
+        {items.map((item, i) => {
+          // Posición relativa respecto a la tarjeta activa
+          const off = (i - current + total) % total;
+          const visible = off <= 2;
 
-        {/* Imágenes: todas en DOM, CSS crossfade — sin AnimatePresence */}
-        {isImageCarousel && items.map((item, i) => (
-          <img
-            key={i}
-            src={item.src}
-            alt={`${title} — ${i + 1}`}
-            className={`pj-carousel__img pj-carousel__img--cf${i === current ? " pj-carousel__img--cf-active" : ""}`}
-          />
-        ))}
-
-        {/* Videos: AnimatePresence fade */}
-        {!isImageCarousel && (
-          <AnimatePresence mode="wait">
+          return (
             <motion.div
-              key={current}
-              className="pj-carousel__video-wrapper"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.22 }}
+              key={i}
+              className={`pj-deck__card${off === 0 ? " pj-deck__card--active" : ""}`}
+              initial={false}
+              animate={{
+                x: `${off * 7}%`,
+                y: off * 10,
+                scale: 1 - off * 0.06,
+                opacity: visible ? (off === 0 ? 1 : 0.45 - off * 0.13) : 0,
+              }}
+              transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+              style={{ zIndex: total - off, pointerEvents: off === 0 ? "auto" : "none" }}
+              aria-hidden={off !== 0}
             >
-              <video
-                ref={videoRef}
-                className="pj-carousel__video"
-                controls
-                preload="metadata"
-              >
-                <source src={activeItem.src} type="video/mp4" />
-              </video>
-            </motion.div>
-          </AnimatePresence>
-        )}
+              {item.type === "image" ? (
+                <img
+                  src={item.src}
+                  alt={`${title} — ${i + 1}`}
+                  loading="lazy"
+                  className={off === 0 ? "pj-deck__img--zoomable" : undefined}
+                  onClick={off === 0 ? () => { playClick(); setExpanded(true); } : undefined}
+                />
+              ) : off === 0 && playing ? (
+                <video ref={videoRef} controls autoPlay preload="metadata">
+                  <source src={item.src} type="video/mp4" />
+                </video>
+              ) : (
+                <video preload="metadata" muted playsInline>
+                  <source src={item.src} type="video/mp4" />
+                </video>
+              )}
 
-        {items.length > 1 && (
+              {/* Play centrado — solo en videos, nunca en imágenes */}
+              {item.type === "video" && !(off === 0 && playing) && (
+                <button
+                  className="pj-deck__play"
+                  onClick={() => { playClick(); setPlaying(true); }}
+                  onMouseEnter={playHover}
+                  aria-label={lang === "es" ? "Reproducir video" : "Play video"}
+                  tabIndex={off === 0 ? 0 : -1}
+                >
+                  <span className="pj-deck__play-pulse" aria-hidden="true" />
+                  <svg
+                    className="pj-deck__play-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5.14v13.72a1 1 0 0 0 1.53.85l10.94-6.86a1 1 0 0 0 0-1.7L9.53 4.29A1 1 0 0 0 8 5.14z" />
+                  </svg>
+                </button>
+              )}
+
+              {/* Expandir — solo en la imagen activa */}
+              {item.type === "image" && off === 0 && (
+                <button
+                  className="pj-deck__expand"
+                  onClick={() => { playClick(); setExpanded(true); }}
+                  onMouseEnter={playHover}
+                  aria-label={lang === "es" ? "Expandir imagen" : "Expand image"}
+                >
+                  <HiArrowsExpand size={17} />
+                </button>
+              )}
+            </motion.div>
+          );
+        })}
+
+        {/* Flechas flotantes a los costados del mazo */}
+        {total > 1 && (
           <>
-            <button className="pj-carousel__btn pj-carousel__btn--prev" onClick={prev} aria-label="Previous">
-              <HiChevronLeft size={22} />
+            <button
+              className="pj-deck__arrow pj-deck__arrow--prev"
+              onClick={() => { playClick(); prev(); }}
+              onMouseEnter={playHover}
+              aria-label={ui.prev}
+            >
+              <HiArrowLeft size={19} />
             </button>
-            <button className="pj-carousel__btn pj-carousel__btn--next" onClick={next} aria-label="Next">
-              <HiChevronRight size={22} />
+            <button
+              className="pj-deck__arrow pj-deck__arrow--next"
+              onClick={() => { playClick(); next(); }}
+              onMouseEnter={playHover}
+              aria-label={ui.next}
+            >
+              <HiArrowRight size={19} />
             </button>
           </>
         )}
       </div>
 
-      {items.length > 1 && (
-        <div className="pj-carousel__thumbnails">
-          {items.map((item, i) => (
+      {/* Indicadores: el activo se rellena al ritmo del auto-slide */}
+      <div className="pj-deck__dots">
+        {items.map((item, i) => (
+          <button
+            key={i}
+            className={`pj-deck__dot${i === current ? " pj-deck__dot--active" : ""}`}
+            onClick={() => { playClick(); setCurrent(i); }}
+            aria-label={`${mediaLabel(item)} ${i + 1}`}
+            aria-current={i === current}
+          >
+            {i === current && (
+              <span
+                key={current}
+                className={`pj-deck__dot-fill${autoPaused ? " pj-deck__dot-fill--paused" : ""}`}
+                style={{ animationDuration: `${AUTOPLAY_MS}ms` }}
+              />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Visor expandido — va en un portal al <body> porque los ancestros
+          animados por framer-motion tienen transform y confinarían el fixed */}
+      {createPortal(
+        <AnimatePresence>
+          {expanded && (
+          <motion.div
+            className="pj-lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={() => setExpanded(false)}
+            role="dialog"
+            aria-modal="true"
+          >
             <button
-              key={i}
-              className={`pj-carousel__thumb${item.type === "video" ? " pj-carousel__thumb--video" : ""}${i === current ? " active" : ""}`}
-              onClick={() => goTo(i)}
-              aria-label={item.type === "video" ? `Video ${i + 1}` : `Image ${i + 1}`}
+              className="pj-lightbox__close"
+              onClick={() => { playClick(); setExpanded(false); }}
+              onMouseEnter={playHover}
+              aria-label={lang === "es" ? "Cerrar" : "Close"}
             >
-              {item.type === "image" ? (
-                <img src={item.src} alt="" />
-              ) : (
-                <span className="pj-carousel__thumb-play" aria-hidden="true">
-                  <HiPlay size={14} />
-                </span>
-              )}
+              <HiX size={22} />
             </button>
-          ))}
-        </div>
+
+            {total > 1 && (
+              <>
+                <button
+                  className="pj-lightbox__arrow pj-lightbox__arrow--prev"
+                  onClick={(e) => { e.stopPropagation(); playClick(); prev(); }}
+                  aria-label={ui.prev}
+                >
+                  <HiArrowLeft size={22} />
+                </button>
+                <button
+                  className="pj-lightbox__arrow pj-lightbox__arrow--next"
+                  onClick={(e) => { e.stopPropagation(); playClick(); next(); }}
+                  aria-label={ui.next}
+                >
+                  <HiArrowRight size={22} />
+                </button>
+              </>
+            )}
+
+            <motion.div
+              className="pj-lightbox__frame"
+              key={current}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {activeItem.type === "image" ? (
+                <img src={activeItem.src} alt={`${title} — ${current + 1}`} />
+              ) : (
+                <video controls preload="metadata">
+                  <source src={activeItem.src} type="video/mp4" />
+                </video>
+              )}
+            </motion.div>
+
+            <span className="pj-lightbox__counter">
+              {mediaLabel(activeItem)} · {current + 1} / {total}
+            </span>
+          </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
       )}
     </div>
   );
@@ -498,6 +784,17 @@ function MediaCarousel({ items, title }) {
 function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasPrev, hasNext, total, currentIndex }) {
   const topRef = useRef(null);
   const [descExpanded, setDescExpanded] = useState(false);
+
+  // Galería unificada: primero las fotos, los videos al final
+  const mediaItems = useMemo(() => {
+    const images = (project.images ?? []).map((src) => ({ type: "image", src }));
+    const videos = (project.videos ?? []).map((v) =>
+      typeof v === "string"
+        ? { type: "video", src: v }
+        : { type: "video", src: v.src, portrait: v.portrait }
+    );
+    return [...images, ...videos];
+  }, [project]);
 
   useEffect(() => {
     topRef.current?.scrollIntoView({ behavior: "instant" });
@@ -697,25 +994,79 @@ function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasP
           </motion.div>
         )}
 
-        {/* Gallery — solo imágenes */}
-        {project.images.length > 0 && (
+        {/* Galería unificada — videos primero, luego imágenes */}
+        {mediaItems.length > 0 && (
           <div className="pj-page__section">
-            <h2 className="pj-page__section-label">{ui.gallery}</h2>
-            <MediaCarousel
-              items={project.images.map((src) => ({ type: "image", src }))}
+            <MediaDeck
+              items={mediaItems}
               title={project.title}
+              lang={lang}
+              ui={ui}
+              sectionLabel={ui.gallery}
             />
           </div>
         )}
 
-        {/* Videos — solo videos */}
-        {project.videos && project.videos.length > 0 && (
+        {/* Proyectos realizados con la plataforma */}
+        {project.showcase && project.showcase.length > 0 && (
           <div className="pj-page__section">
-            <h2 className="pj-page__section-label">{ui.preview}</h2>
-            <MediaCarousel
-              items={project.videos.map((v) => typeof v === "string" ? { type: "video", src: v } : { type: "video", src: v.src, portrait: v.portrait })}
-              title={project.title}
-            />
+            <h2 className="pj-page__section-label">{ui.builtWith}</h2>
+            <p className="pj-showcase__intro">{ui.builtWithSub}</p>
+            <div className="pj-showcase__grid">
+              {project.showcase.map((item, i) => (
+                <motion.article
+                  key={item.key}
+                  className="pj-showcase__card"
+                  initial={{ opacity: 0, y: 26 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                >
+                  <div className="pj-showcase__media">
+                    <img src={item.cover} alt={item.title} loading="lazy" />
+                    <div className="pj-showcase__media-fade" />
+                    {item.logo && (
+                      <div
+                        className="pj-showcase__logo"
+                        style={item.logoBg ? { background: item.logoBg } : undefined}
+                      >
+                        <img src={item.logo} alt={`${item.title} logo`} loading="lazy" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pj-showcase__body">
+                    <h3 className="pj-showcase__title">{item.title}</h3>
+                    {item.client && (
+                      <p className="pj-showcase__client">
+                        <span>{ui.clientLabel}</span> {item.client}
+                      </p>
+                    )}
+                    <p className="pj-showcase__desc">{item.desc[lang]}</p>
+
+                    {item.specs && (
+                      <ul className="pj-showcase__specs">
+                        {item.specs.map((s) => (
+                          <li key={s.en} className="pj-showcase__spec">{s[lang]}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pj-showcase__link"
+                      onMouseEnter={playHover}
+                      onClick={playClick}
+                    >
+                      <span>{ui.viewTour}</span>
+                      <HiArrowRight size={17} />
+                    </a>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
           </div>
         )}
 
@@ -753,9 +1104,6 @@ function ProjectPage({ project, projects, lang, ui, onBack, onPrev, onNext, hasP
 /* ==================== CATEGORY PICKER ==================== */
 
 function CategoryPicker({ ui, onSelect }) {
-  const threeDCount = projectsData.filter((p) => p.category === "3d").length;
-  const webCount    = projectsData.filter((p) => p.category === "web" && !p.comingSoon).length;
-
   return (
     <motion.div
       className="cat-picker"
@@ -798,9 +1146,6 @@ function CategoryPicker({ ui, onSelect }) {
           }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <span className="cat-panel__count">
-            {threeDCount} {ui.projectsCount}
-          </span>
           <h2 className="cat-panel__title">{ui.catThreeD}</h2>
           <p className="cat-panel__sub">{ui.catThreeDSub}</p>
           <div className="cat-panel__cta">
@@ -847,9 +1192,6 @@ function CategoryPicker({ ui, onSelect }) {
           }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <span className="cat-panel__count">
-            {webCount} {ui.projectsCount}
-          </span>
           <h2 className="cat-panel__title">{ui.catWeb}</h2>
           <p className="cat-panel__sub">{ui.catWebSub}</p>
           <div className="cat-panel__cta">
@@ -1053,20 +1395,20 @@ export default function Portfolio() {
                             src={project.cover}
                             alt={project.title}
                             loading="lazy"
-                            style={(project.cardImgPos || project.cardImgFit) ? { objectPosition: project.cardImgPos, objectFit: project.cardImgFit, backgroundColor: project.cardImgBg, transform: project.cardImgScale ? `scale(${project.cardImgScale})` : undefined } : undefined}
+                            style={(project.cardImgPos || project.cardImgFit || project.cardImgScale || project.cardImgOffsetY) ? { objectPosition: project.cardImgPos, objectFit: project.cardImgFit, backgroundColor: project.cardImgBg, "--card-img-scale": project.cardImgScale, "--card-img-y": project.cardImgOffsetY } : undefined}
                           />
                         ) : (
                           <div className="project-card__no-thumb" aria-hidden="true">
                             <HiPlay size={36} />
                           </div>
                         )}
+                        <div className="card-tags">
+                          {project.tags.slice(0, 2).map((tag) => (
+                            <span key={tag} className="card-tag">{tag}</span>
+                          ))}
+                        </div>
                         <div className="overlay">
                           <h3>{project.title}</h3>
-                          <div className="card-tags">
-                            {project.tags.slice(0, 2).map((tag) => (
-                              <span key={tag} className="card-tag">{tag}</span>
-                            ))}
-                          </div>
                           <p className="card-short-desc">{project.shortDesc[lang]}</p>
                         </div>
                       </motion.div>

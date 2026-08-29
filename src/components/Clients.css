@@ -51,148 +51,197 @@
   margin: 0;
 }
 
-/* Grid */
-.clients-grid {
+/* ===== MURO DE LOGOS ===== */
+
+.logo-wall {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  /* 3 columnas en escritorio: con 6 clientes quedan dos filas parejas */
+  grid-template-columns: repeat(3, 1fr);
+  /* El gap de 1px sobre el fondo del contenedor dibuja las líneas finas */
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 36px;
 }
 
-/* Card */
-.client-card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-top: 3px solid var(--accent, #6366f1);
-  border-radius: 14px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.client-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-}
-
-.client-card__top {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.client-card__avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 700;
+.logo-tile {
+  position: relative;
+  font-family: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  overflow: hidden;
-  padding: 6px;
+  min-height: 118px;
+  padding: 26px 22px;
+  cursor: pointer;
+  border: none;
+  background: rgba(15, 23, 42, 0.88);
+  transition: background 0.3s ease;
 }
 
-.client-card__logo {
-  width: 100%;
-  height: 100%;
+.logo-tile img {
+  max-width: 100%;
+  max-height: 52px;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  border-radius: 6px;
+  /* En reposo los logos van apagados; el activo recupera su color */
+  filter: grayscale(1) brightness(1.6);
+  opacity: 0.38;
+  transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
 }
 
-.client-card__info {
+.logo-tile__initials {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  transition: color 0.35s ease;
+}
+
+.logo-tile:hover img,
+.logo-tile--active img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.logo-tile:hover,
+.logo-tile--active {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.logo-tile:hover .logo-tile__initials,
+.logo-tile--active .logo-tile__initials {
+  color: #f1f5f9;
+}
+
+/* Barra inferior en el color de acento del cliente activo */
+.logo-tile__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent, #6366f1);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-tile--active .logo-tile__bar {
+  transform: scaleX(1);
+}
+
+/* ===== PANEL DE DETALLE ===== */
+
+.client-detail {
+  position: relative;
+  border-left: 2px solid var(--accent, #6366f1);
+  padding-left: 26px;
+  min-height: 190px;
+}
+
+.client-detail__head {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
-.client-card__name {
-  font-size: 1rem;
+.client-detail__name {
+  margin: 0 0 5px;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #f1f5f9;
-  margin: 0;
-  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-.client-card__sector {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+.client-detail__sector {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent, #6366f1);
 }
 
-.client-card__desc {
-  font-size: 0.875rem;
-  color: #94a3b8;
-  line-height: 1.6;
-  margin: 0;
-  flex: 1;
-}
-
-.client-card__footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.client-card__projects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.client-card__project-chip {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #cbd5e1;
-}
-
-.client-card__year {
+.client-detail__year {
+  flex-shrink: 0;
   font-size: 0.78rem;
-  font-weight: 600;
-  color: #475569;
-  white-space: nowrap;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
 }
 
-/* Responsive */
+.client-detail__desc {
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #94a3b8;
+  max-width: 66ch;
+}
+
+.client-detail__projects {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.client-detail__chip {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  padding: 5px 13px;
+  white-space: nowrap;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.client-detail__chip:hover {
+  border-color: var(--accent, #6366f1);
+  color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
   .clients-section {
-    padding: 40px 20px;
+    padding: 48px 24px;
   }
 
-  .clients-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .logo-wall {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 28px;
   }
 
-  .client-card {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .client-card__avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    padding: 4px;
+  .logo-tile {
+    min-height: 92px;
+    padding: 18px 16px;
   }
 
-  .clients-title {
-    font-size: 1.6rem;
+  .logo-tile img {
+    max-height: 38px;
+    /* Sin hover en táctil: los logos se ven siempre legibles */
+    opacity: 0.6;
+  }
+
+  .client-detail {
+    padding-left: 18px;
+  }
+
+  .client-detail__name {
+    font-size: 1.15rem;
+  }
+
+  .client-detail__desc {
+    font-size: 0.88rem;
   }
 }
